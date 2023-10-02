@@ -6,7 +6,6 @@
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Demo](#demo)
 - [API Documentation](#api-documentation)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
@@ -17,12 +16,8 @@
 
 ## Project Overview
 
-Our team has decided to develop a food delivery system that utilizes drone technology for efficient and rapid deliveries. We are integrating the Google Maps API to enhance location-based services, making it possible to deliver food orders quickly and accurately using drones.
+Our team has decided to develop a food delivery system that utilizes drone technology for efficient and rapid deliveries. We are integrating the Google Maps API to enhance location-based services, making it possible to deliver food orders quickly and accurately using drones.We are developing an innovative food delivery application that leverages drone technology for rapid and contactless deliveries. Our platform connects customers with local restaurants, allowing them to place food orders through a user-friendly mobile app or website. Once an order is placed, the system optimizes the delivery route using the Google Maps API and dispatches a delivery drone to transport the order directly to the customer's location. Customers can track the real-time progress of their deliveries on a map within the app. This project aims to provide a faster, more efficient, and convenient food delivery experience while embracing the future of delivery with drone technology.
 
-
-## Demo
-
-[Include a link to a live demo or a video demonstration of your project if available.]
 
 ## API Documentation
 
