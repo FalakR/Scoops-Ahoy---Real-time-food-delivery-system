@@ -1,5 +1,5 @@
 # CSC207_Project
-# Project Name
+
 
 [Project Description]
 
