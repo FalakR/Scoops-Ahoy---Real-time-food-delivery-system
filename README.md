@@ -23,6 +23,8 @@ Our team has decided to develop a food delivery system that utilizes drone techn
 
 
 ## Usage
+Here is a screenshot of using the Google Maps API, by giving University of Toronto as address.
+![Alt Text](URL)
 
 
 
