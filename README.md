@@ -21,7 +21,8 @@ Our team has decided to develop a food delivery system that utilizes drone techn
 
 ## API Documentation
 
-[Link to the documentation of the API you are using for this project. Describe the purpose of the API and how it relates to your project.]
+[Google Maps Platform Documentation](https://developers.google.com/maps/documentation)
+
 
 ## Getting Started
 
