@@ -17,7 +17,8 @@
 
 ## Project Overview
 
-[Provide a brief description of your project and its objectives. Explain the problem you aim to solve and the value your project brings.]
+Our team is embarking on an ambitious project to develop a food delivery system that utilizes drone technology for efficient and rapid deliveries. We are integrating the Google Maps API to enhance location-based services, making it possible to deliver food orders quickly and accurately using drones.
+
 
 ## Demo
 
