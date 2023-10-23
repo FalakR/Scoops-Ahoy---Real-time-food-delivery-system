@@ -13,15 +13,22 @@
 
 ## Project Overview
 
-Our team has decided to develop a food delivery system that utilizes drone technology for efficient and rapid deliveries. We are integrating the Google Maps API to enhance location-based services, making it possible to deliver food orders quickly and accurately using drones.We are developing an innovative food delivery application that leverages drone technology for rapid and contactless deliveries. Our platform connects customers with local restaurants, allowing them to place food orders through a user-friendly mobile app or website. Once an order is placed, the system optimizes the delivery route using the Google Maps API and dispatches a delivery drone to transport the order directly to the customer's location. Customers can track the real-time progress of their deliveries on a map within the app. This project aims to provide a faster, more efficient, and convenient food delivery experience while embracing the future of delivery with drone technology.
+Project Domain : Food Delivery and Real-time Tracking
+
+The Scoops Ahoy Food Delivery App is a comprehensive solution designed for "Scoops Ahoy," a local ice cream shop, to streamline their food delivery operations and enhance the overall customer experience. This project aims to provide an efficient and user-friendly mobile application for both customers and delivery personnel. The app, allows users to log in or sign up easily. Users can browse a menu catalogue, add or remove items from their shopping cart, and view their cart contents anytime. They can place orders, track real-time delivery progress on a map, and receive alerts when their delivery is near. 
 
 
 ## API Documentation
+
+To achieve real-time tracking and efficient order management, we plan to integrate with a third-party API for mapping and tracking. We are considering using the Google Maps API for this purpose. Below is the link to the Google Maps API documentation:
+
 
 [Google Maps Platform Documentation](https://developers.google.com/maps/documentation)
 
 
 ## Usage
+
+
 Here is a screenshot of using the Google Maps API, by giving University of Toronto as address. This is an example output of running our Java code.
 ![ALT Text](https://github.com/FalakR/CSC207_Project/blob/main/Screenshot%202023-10-01%20at%2011.39.34%20PM.png?raw=true)
 
@@ -31,5 +38,5 @@ Here is a screenshot of using the Google Maps API, by giving University of Toron
 - [Gurveen Kaur Sahni](gurveenkaur)
 - [Falak Rastogi](falakr)
 - [Harnehmat Kaur](nehmat-kaur)
-- Eren suner()
+- [Eren suner](gerroo)
 
