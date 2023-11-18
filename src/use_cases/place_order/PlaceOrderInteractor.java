@@ -1,6 +1,6 @@
 package use_cases.place_order;
 
-public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
+public class PlaceOrderInteractor implements PlaceOrderInputBoundary{
 
     final PlaceOrderOutputBoundary placeOrderPresenter;
 
@@ -13,3 +13,4 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
 //        PlaceOrderOutputData placeOrderOutputData = new
     }
 }
+
