@@ -16,11 +16,11 @@ public class LoginState {
     // Because of the previous copy constructor, the default constructor must be explicit.
     public LoginState() {}
 
-    public String getUsername() {
+    public String getEmail() {
         return email;
     }
 
-    public String getUsernameError() {
+    public String getEmailError() {
         return emailError;
     }
 

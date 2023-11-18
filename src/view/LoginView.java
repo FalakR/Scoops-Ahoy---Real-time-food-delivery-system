@@ -41,7 +41,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         JLabel title = new JLabel("Login Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        LabelTextPanel usernameInfo = new LabelTextPanel(
+        LabelTextPanel emailInfo = new LabelTextPanel(
                 new JLabel("Email"), emailInputField);
         LabelTextPanel passwordInfo = new LabelTextPanel(
                 new JLabel("Password"), passwordInputField);
@@ -74,7 +74,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
-        this.add(usernameInfo);
+        this.add(emailInfo);
         this.add(emailErrorField);
         this.add(passwordInfo);
         this.add(passwordErrorField);
@@ -95,7 +95,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
     }
 
     private void setFields(LoginState state) {
-        emailInputField.setText(state.getUsername());
+        emailInputField.setText(state.getEmail());
         passwordInputField.setText(state.getPassword());
     }
 }
