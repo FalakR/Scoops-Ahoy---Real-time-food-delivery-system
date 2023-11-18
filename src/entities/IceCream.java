@@ -15,7 +15,7 @@ public class IceCream {
         return name;
     }
 
-    public String getFlavor() {
+    public String getFlavour() {
         return flavor;
     }
 
