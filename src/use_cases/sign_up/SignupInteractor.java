@@ -29,7 +29,9 @@ public class SignupInteractor implements SignupInputBoundary {
             userDataAccessObject.save(user);
 
             SignupOutputData signupOutputData = new SignupOutputData(user.getEmail(), now.toString(), false);
-            userPresenter.prepareSuccessView(signupOutputData);
+
+            userPresenter.prepareSuccessView();
+
         }
     }
 }

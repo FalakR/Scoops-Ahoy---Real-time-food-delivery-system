@@ -1,6 +1,9 @@
 package app;
 
 import data_access.FileUserDataAccessObject;
+
+import interface_adapters.browse.BrowseViewModel;
+
 import interface_adapters.login.LoginViewModel;
 import interface_adapters.signup.SignupController;
 import interface_adapters.signup.SignupPresenter;
@@ -23,11 +26,14 @@ public class SignupUseCaseFactory {
     private SignupUseCaseFactory() {}
 
     public static SignupView create(
-            ViewManagerModel viewManagerModel, LoginViewModel loginViewModel, SignupViewModel signupViewModel, FileUserDataAccessObject userDataAccessObject) {
+
+            ViewManagerModel viewManagerModel, LoginViewModel loginViewModel, SignupViewModel signupViewModel, BrowseViewModel browseViewModel, FileUserDataAccessObject userDataAccessObject) {
 
         try {
-            SignupController signupController = createUserSignupUseCase(viewManagerModel, signupViewModel, loginViewModel, userDataAccessObject);
-            return new SignupView(signupController, signupViewModel);
+            SignupController signupController = createUserSignupUseCase(viewManagerModel, signupViewModel, loginViewModel, browseViewModel, userDataAccessObject);
+            SignupPresenter signupPresenter = new SignupPresenter(viewManagerModel, signupViewModel, loginViewModel, browseViewModel);
+            return new SignupView(signupController, signupPresenter, signupViewModel);
+
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Could not open user data file.");
         }
@@ -35,10 +41,12 @@ public class SignupUseCaseFactory {
         return null;
     }
 
-    private static SignupController createUserSignupUseCase(ViewManagerModel viewManagerModel, SignupViewModel signupViewModel, LoginViewModel loginViewModel, SignupDataAccessInterface userDataAccessObject) throws IOException {
+
+    private static SignupController createUserSignupUseCase(ViewManagerModel viewManagerModel, SignupViewModel signupViewModel, LoginViewModel loginViewModel, BrowseViewModel browseViewModel, SignupDataAccessInterface userDataAccessObject) throws IOException {
 
         // Notice how we pass this method's parameters to the Presenter.
-        SignupOutputBoundary signupOutputBoundary = new SignupPresenter(viewManagerModel, signupViewModel, loginViewModel);
+        SignupOutputBoundary signupOutputBoundary = new SignupPresenter(viewManagerModel, signupViewModel, loginViewModel, browseViewModel);
+
 
         UserFactory userFactory = new CommonUserFactory();
 

@@ -10,10 +10,11 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary{
         this.placeOrderPresenter = placeOrderPresenter;
     }
 
-    @Override
-    public void execute(PlaceOrderInputData placeOrderInputData) {
 
-        placeOrderPresenter.prepareView();
-    }
+//    @Override
+//    public void execute(PlaceOrderInputData placeOrderInputData) {
+//        PlaceOrderOutputData placeOrderOutputData = new
+//    }
+
 }
 
