@@ -1,6 +1,7 @@
 package view;
 
 import interface_adapters.signup.SignupController;
+import interface_adapters.signup.SignupPresenter;
 import interface_adapters.signup.SignupState;
 import interface_adapters.signup.SignupViewModel;
 
@@ -21,13 +22,16 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
     private final JTextField emailInputField = new JTextField(15);
     private final JPasswordField passwordInputField = new JPasswordField(15);
     private final SignupController signupController;
+    private final SignupPresenter signupPresenter;
 
     private final JButton signUp;
-    private final JButton cancel;
+    private final JButton logIn;
 
-    public SignupView(SignupController controller, SignupViewModel signupViewModel) {
+
+    public SignupView(SignupController controller, SignupPresenter presenter, SignupViewModel signupViewModel) {
 
         this.signupController = controller;
+        this.signupPresenter = presenter;
         this.signupViewModel = signupViewModel;
         signupViewModel.addPropertyChangeListener(this);
 
@@ -44,8 +48,8 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
         JPanel buttons = new JPanel();
         signUp = new JButton(signupViewModel.SIGNUP_BUTTON_LABEL);
         buttons.add(signUp);
-        cancel = new JButton(signupViewModel.CANCEL_BUTTON_LABEL);
-        buttons.add(cancel);
+        logIn = new JButton(signupViewModel.LOGIN_BUTTON_LABEL);
+        buttons.add(logIn);
 
         signUp.addActionListener(
                 // This creates an anonymous subclass of ActionListener and instantiates it.
@@ -59,7 +63,16 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     }
                 }
         );
-        cancel.addActionListener(this);
+        logIn.addActionListener((
+                // This creates an anonymous subclass of ActionListener and instantiates it.
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(signUp)) {
+                            signupPresenter.prepareLoginView();
+                        }
+                    }
+                }
+        ));
 
         // This makes a new KeyListener implementing class, instantiates it, and
         // makes it listen to keystrokes in the usernameInputField.

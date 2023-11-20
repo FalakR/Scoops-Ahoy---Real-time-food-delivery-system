@@ -4,6 +4,7 @@ import data_access.FileUserDataAccessObject;
 import entities.CommonUserFactory;
 import interface_adapters.ViewManagerModel;
 
+import interface_adapters.browse.BrowseViewModel;
 import interface_adapters.login.LoginViewModel;
 import interface_adapters.signup.SignupViewModel;
 
@@ -42,6 +43,8 @@ public class Main {
 
         SignupViewModel signupViewModel = new SignupViewModel();
 
+        BrowseViewModel browseViewModel = new BrowseViewModel();
+
         FileUserDataAccessObject userDataAccessObject;
         try {
             userDataAccessObject = new FileUserDataAccessObject("./users.csv", new CommonUserFactory());
@@ -49,7 +52,7 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, userDataAccessObject);
+        SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, browseViewModel, userDataAccessObject);
         views.add(signupView, signupView.viewName);
 
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, userDataAccessObject);
