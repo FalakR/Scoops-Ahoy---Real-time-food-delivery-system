@@ -43,7 +43,9 @@ public class Main {
 
         SignupViewModel signupViewModel = new SignupViewModel();
 
+
         BrowseViewModel browseViewModel = new BrowseViewModel();
+
 
         FileUserDataAccessObject userDataAccessObject;
         try {
@@ -52,7 +54,9 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, browseViewModel, userDataAccessObject);
+
         views.add(signupView, signupView.viewName);
 
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, userDataAccessObject);
