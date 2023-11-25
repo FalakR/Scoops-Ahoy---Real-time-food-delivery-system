@@ -3,7 +3,7 @@ package app;
 import data_access.FileUserDataAccessObject;
 
 import interface_adapters.ViewManagerModel;
-import interface_adapters.browse.BrowseViewModel;
+import interface_adapters.add_to_cart.AddToCartViewModel;
 
 import interface_adapters.login.LoginViewModel;
 import interface_adapters.signup.SignupController;
@@ -27,7 +27,7 @@ public class SignupUseCaseFactory {
 
     public static SignupView create(
 
-            ViewManagerModel viewManagerModel, LoginViewModel loginViewModel, SignupViewModel signupViewModel, BrowseViewModel browseViewModel, FileUserDataAccessObject userDataAccessObject) {
+            ViewManagerModel viewManagerModel, LoginViewModel loginViewModel, SignupViewModel signupViewModel, AddToCartViewModel browseViewModel, FileUserDataAccessObject userDataAccessObject) {
 
         try {
             SignupController signupController = createUserSignupUseCase(viewManagerModel, signupViewModel, loginViewModel, browseViewModel, userDataAccessObject);
@@ -42,7 +42,7 @@ public class SignupUseCaseFactory {
     }
 
 
-    private static SignupController createUserSignupUseCase(ViewManagerModel viewManagerModel, SignupViewModel signupViewModel, LoginViewModel loginViewModel, BrowseViewModel browseViewModel, SignupDataAccessInterface userDataAccessObject) throws IOException {
+    private static SignupController createUserSignupUseCase(ViewManagerModel viewManagerModel, SignupViewModel signupViewModel, LoginViewModel loginViewModel, AddToCartViewModel browseViewModel, SignupDataAccessInterface userDataAccessObject) throws IOException {
 
         // Notice how we pass this method's parameters to the Presenter.
         SignupOutputBoundary signupOutputBoundary = new SignupPresenter(viewManagerModel, signupViewModel, loginViewModel, browseViewModel);

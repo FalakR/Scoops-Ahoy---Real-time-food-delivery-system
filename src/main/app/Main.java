@@ -4,7 +4,7 @@ import data_access.FileUserDataAccessObject;
 import entities.CommonUserFactory;
 import interface_adapters.ViewManagerModel;
 
-import interface_adapters.browse.BrowseViewModel;
+import interface_adapters.add_to_cart.AddToCartViewModel;
 import interface_adapters.login.LoginViewModel;
 import interface_adapters.signup.SignupViewModel;
 
@@ -44,7 +44,7 @@ public class Main {
         SignupViewModel signupViewModel = new SignupViewModel();
 
 
-        BrowseViewModel browseViewModel = new BrowseViewModel();
+        AddToCartViewModel browseViewModel = new AddToCartViewModel();
 
 
         FileUserDataAccessObject userDataAccessObject;
