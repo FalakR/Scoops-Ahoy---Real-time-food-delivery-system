@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.csc207project'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Ably API
+    implementation 'io.ably:ably-java:1.2.0'
+    // Google Maps API
+    implementation 'com.google.maps:google-maps-services:2.2.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+
+    // JUnit
+    testImplementation 'junit:junit:4.13'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main']
+        }
+    }
+    test {
+        java {
+            srcDirs = ["src/test"]
+        }
+    }
+}
+
+application {
+    mainClass = 'app.Main'
+}
+
+jar {
+    archiveBaseName = 'scoops_ahoy'
+    archiveVersion =  '0.0.1'
+}
