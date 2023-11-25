@@ -1,4 +1,4 @@
 package use_cases.add_to_cart;
 
-public class ATCInteractor {
+public class AddToCartInputData {
 }
