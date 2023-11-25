@@ -1,6 +1,6 @@
-package interface_adapters.browse;
+package interface_adapters.add_to_cart;
 
-public class BrowseViewModel {
+public class AddToCartViewModel {
     public void firePropertyChanged() {
     }
 

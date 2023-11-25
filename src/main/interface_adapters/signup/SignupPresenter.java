@@ -1,7 +1,7 @@
 package interface_adapters.signup;
 
 import interface_adapters.ViewManagerModel;
-import interface_adapters.browse.BrowseViewModel;
+import interface_adapters.add_to_cart.AddToCartViewModel;
 import interface_adapters.login.LoginViewModel;
 import use_cases.sign_up.SignupOutputBoundary;
 
@@ -9,17 +9,17 @@ public class SignupPresenter implements SignupOutputBoundary {
 
     private final SignupViewModel signupViewModel;
     private final LoginViewModel loginViewModel;
-    private final BrowseViewModel browseViewModel;
+    private final AddToCartViewModel browseViewModel;
     private ViewManagerModel viewManagerModel;
 
     public SignupPresenter(ViewManagerModel viewManagerModel,
                            SignupViewModel signupViewModel,
                            LoginViewModel loginViewModel,
-                           BrowseViewModel browseViewModel) {
+                           AddToCartViewModel addToCartViewModel) {
         this.viewManagerModel = viewManagerModel;
         this.signupViewModel = signupViewModel;
         this.loginViewModel = loginViewModel;
-        this.browseViewModel = browseViewModel;
+        this.browseViewModel = addToCartViewModel;
     }
 
     @Override
