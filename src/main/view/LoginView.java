@@ -12,7 +12,7 @@ import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class LoginView extends JPanel implements ActionListener, PropertyChangeListener {
+public class LoginView extends JFrame implements ActionListener, PropertyChangeListener {
 
     public final String viewName = "log in";
     private final LoginViewModel loginViewModel;
@@ -38,8 +38,8 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         this.loginViewModel = loginViewModel;
         this.loginViewModel.addPropertyChangeListener(this);
 
-        JLabel title = new JLabel("Login Screen");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel title = new JLabel("Scoops Ahoy");
+        title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24)); // Set font to Engravers Gothic BT
 
         LabelTextPanel emailInfo = new LabelTextPanel(
                 new JLabel("Email"), emailInputField);
@@ -54,6 +54,18 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
         logIn.addActionListener(this);
         cancel.addActionListener(this);
+
+        this.setBackground(new Color(253, 227, 245)); // Pastel Pink
+        emailInfo.setBackground(new Color(255, 250, 205)); // Lemon Chiffon
+        passwordInfo.setBackground(new Color(240, 255, 240)); // Honeydew
+        buttons.setBackground(new Color(255, 223, 0)); // Pastel Yellow
+
+        // Set text color
+        title.setForeground(new Color(77, 77, 77)); // Dark Gray
+
+        // Set button color
+        logIn.setBackground(new Color(255, 182, 193)); // Baby Pink
+        cancel.setBackground(new Color(255, 182, 193)); // Baby Pink
 
         emailInputField.addKeyListener(new KeyListener() {
             @Override
@@ -71,14 +83,28 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
             public void keyReleased(KeyEvent e) {
             }
         });
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new BorderLayout());
 
-        this.add(title);
-        this.add(emailInfo);
-        this.add(emailErrorField);
-        this.add(passwordInfo);
-        this.add(passwordErrorField);
-        this.add(buttons);
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.add(title);
+
+        JPanel formPanel = new JPanel();
+        formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
+        formPanel.add(emailInfo);
+        formPanel.add(passwordInfo);
+
+        this.add(titlePanel, BorderLayout.NORTH);
+        this.add(formPanel, BorderLayout.CENTER);
+        this.add(buttons, BorderLayout.SOUTH);
+
+        // Pack the components to determine the frame size
+        pack();
+
+        // Center the window on the screen
+        setLocationRelativeTo(null);
+
+        // Set the operation to close the application when the frame is closed
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     /**
