@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f84e0dc-ec04-4dcc-9856-d0afd3763e24" name="Changes" comment="changes made to NotifState, NotifView and NotifViewModel">
+    <list default="true" id="6f84e0dc-ec04-4dcc-9856-d0afd3763e24" name="Changes" comment="Wrote code for AddToCartState and ViewModel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/view/SignupView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/SignupView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/data_access/FileIceCreamDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/data_access/FileIceCreamDataAccessObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/use_cases/add_to_cart/AddToCartDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/add_to_cart/AddToCartDataAccessInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/view/BrowseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/BrowseView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,31 +63,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "coverage",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;121&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;coverage&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.test">
+  <component name="RunManager" selected="Gradle.run">
     <configuration name="CommonUserTest.testEmail" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -230,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700951075220</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Wrote code for AddToCartState and ViewModel">
+      <option name="closed" value="true" />
+      <created>1701368323334</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701368323334</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,10 +259,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ff" />
     <MESSAGE value="changes made to NotifState, NotifView and NotifViewModel" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes made to NotifState, NotifView and NotifViewModel" />
+    <MESSAGE value="Wrote code for AddToCartState and ViewModel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wrote code for AddToCartState and ViewModel" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CSC207_Project$test.ic" NAME="test Coverage Results" MODIFIED="1700949016109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/CSC207_Project_team$test.ic" NAME="test Coverage Results" MODIFIED="1700948938856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/CSC207_Project$test.ic" NAME="test Coverage Results" MODIFIED="1700945347188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

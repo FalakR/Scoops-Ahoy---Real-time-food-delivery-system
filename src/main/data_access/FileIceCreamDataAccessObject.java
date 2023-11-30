@@ -49,7 +49,7 @@ public class FileIceCreamDataAccessObject implements AddToCartDataAccessInterfac
         }
     }
 
-    public IceCream get(String name) {
+    public IceCream getIceCream(String name) {
         return accounts.get(name);
     }
 

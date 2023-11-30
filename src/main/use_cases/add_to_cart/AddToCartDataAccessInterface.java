@@ -4,5 +4,5 @@ import entities.IceCream;
 
 public interface AddToCartDataAccessInterface {
 
-    IceCream get(String name);
+    IceCream getIceCream(String name);
 }
