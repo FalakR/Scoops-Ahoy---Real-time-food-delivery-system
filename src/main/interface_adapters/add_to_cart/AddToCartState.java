@@ -1,4 +1,8 @@
 package interface_adapters.add_to_cart;
 
-public class AddToCartState {
-}
+import entities.IceCream;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AddToCartState {}
