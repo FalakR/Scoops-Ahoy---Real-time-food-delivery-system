@@ -25,6 +25,9 @@ public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
     public void prepareSuccessView(PlaceOrderOutputData response) {
         // switch to the tracking view
         TrackState trackState = trackViewModel.getState();
+
+        //  TODO: make sure Eren has implemented setAddess and set Order in TrackState.java
+        //trackState.setAddress(response.getUserAddress());
         //trackState.setOrder(response.getOrderSummary());
 
         this.trackViewModel.setState(trackState);

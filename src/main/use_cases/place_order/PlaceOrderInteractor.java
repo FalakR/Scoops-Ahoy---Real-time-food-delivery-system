@@ -30,7 +30,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         } else {
             // Process the order
             String orderSummary = createOrderSummary(iceCreams, userAddress);
-            PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary);
+            PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary, userAddress);
             placeOrderPresenter.prepareSuccessView(placeOrderOutputData);
 
             // Additional logic based on the result

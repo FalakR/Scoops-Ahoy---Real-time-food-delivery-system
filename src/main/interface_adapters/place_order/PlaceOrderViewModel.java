@@ -39,4 +39,5 @@ public class PlaceOrderViewModel extends ViewModel {
     public PlaceOrderState getState() {
         return state;
     }
+
 }
