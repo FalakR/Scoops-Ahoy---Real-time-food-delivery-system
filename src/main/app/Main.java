@@ -56,16 +56,16 @@ public class Main {
 
 
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, browseViewModel, userDataAccessObject);
-
-        views.add(signupView, signupView.viewName);
-
+        views.add(signupView.getContentPane(), signupView.viewName);
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, userDataAccessObject);
-        views.add(loginView, loginView.viewName);
+        views.add(loginView.getContentPane(), loginView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
+        application.setLocationRelativeTo(null);
+        application.setSize(1000,700);
         application.setVisible(true);
     }
 }
