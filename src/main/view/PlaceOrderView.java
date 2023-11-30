@@ -31,6 +31,7 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
         placeOrderViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Place Order");
+        title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelTextPanel userAddressInfo = new LabelTextPanel(
@@ -48,6 +49,7 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
         cancel = new JButton("Cancel");
         buttons.add(cancel);
 
+        this.setBackground(new Color(253, 227, 245)); // Pastel Pink
         placeOrder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 if (evt.getSource().equals(placeOrder)) {
