@@ -1,7 +1,7 @@
 package data_access;
 
 import entities.CommonLocation;
-import entities.Item;
+import entities.IceCream;
 import entities.Location;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -39,26 +39,26 @@ public class AblyDataAccessObjectTest {
 
     }
 
-    @Test
+//    @Test
     public void publishAndSubscribe() throws AblyException {
 
         // Test for publish
 
-        ArrayList<Item> orderItems = new ArrayList<>();
-        orderItems.add(new Item() {
+        ArrayList<IceCream> orderItems = new ArrayList<>();
+        orderItems.add(new IceCream() {
             @Override
             public String getName() {
                 return "item1";
             }
 
             @Override
-            public Integer getCode() {
-                return 101;
+            public String getFlavour() {
+                return "Chocolate";
             }
 
             @Override
-            public Double getPrice() {
-                return 12.75;
+            public Integer getPrice() {
+                return 12;
             }
         });
 

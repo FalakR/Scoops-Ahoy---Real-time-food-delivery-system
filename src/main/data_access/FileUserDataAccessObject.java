@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class FileUserDataAccessObject implements SignupDataAccessInterface, LoginDataAccessInterface, AddToCartDataAccessInterface, PlaceOrderDataAccessInterface {
+public class FileUserDataAccessObject implements SignupDataAccessInterface, LoginDataAccessInterface {
 
     private final File csvFile;
 

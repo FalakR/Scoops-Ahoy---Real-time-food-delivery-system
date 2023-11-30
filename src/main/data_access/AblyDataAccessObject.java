@@ -1,7 +1,7 @@
 package data_access;
 
 import entities.CommonLocation;
-import entities.Item;
+import entities.IceCream;
 import entities.Location;
 import io.ably.lib.realtime.AblyRealtime;
 import io.ably.lib.realtime.Channel;
@@ -37,7 +37,7 @@ public class AblyDataAccessObject implements TrackOrderDataAccessInterface, Plac
      * @return userId - uuid string
      */
     @Override
-    public String publish(List<Item> orderItems, Location userLoc) {
+    public String publish(List<IceCream> orderItems, Location userLoc) {
         String orderId = UUID.randomUUID().toString();
 
         // Construct JSON object to publish
@@ -54,10 +54,10 @@ public class AblyDataAccessObject implements TrackOrderDataAccessInterface, Plac
 
         ArrayList<HashMap<String, Object>> h = new ArrayList<>();
 
-        for (Item item: orderItems) {
+        for (IceCream item: orderItems) {
             HashMap<String, Object> q = new HashMap<>();
             q.put("name", item.getName());
-            q.put("code", item.getCode());
+            q.put("flavour", item.getFlavour());
             q.put("price", item.getPrice());
             h.add(q);
         }
