@@ -52,23 +52,29 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
         JPanel buttons = new JPanel();
         signUp = new JButton("Sign Up");
         signUp.setPreferredSize(new Dimension(100, 50));
+//        signUp.setBackground(new Color(255, 223, 0));
+//        signUp.setOpaque(true);
+//        signUp.setBorderPainted(false);
         buttons.add(signUp);
         logIn = new JButton("Log In");
         logIn.setPreferredSize(new Dimension(100, 50));
+//        logIn.setBackground(new Color(255, 223, 0));
+//        logIn.setOpaque(true);
+//        logIn.setBorderPainted(false);
         buttons.add(logIn);
 
         this.setBackground(new Color(253, 227, 245)); // Pastel Pink
         nameInfo.setBackground(new Color(255, 218, 185)); // Peach
         emailInfo.setBackground(new Color(255, 250, 205)); // Lemon Chiffon
         passwordInfo.setBackground(new Color(240, 255, 240)); // Honeydew
-        buttons.setBackground(new Color(255, 223, 0)); // Pastel Yellow
+        buttons.setBackground(new Color(230, 230, 250)); // Mint Green
 
         // Set text color
         title.setForeground(new Color(77, 77, 77)); // Dark Gray
 
-        // Set button color
-        signUp.setBackground(new Color(255, 182, 193)); // Baby Pink
-        logIn.setBackground(new Color(255, 182, 193)); // Baby Pink
+//        // Set button color
+//        signUp.setBackground(new Color(255, 223, 0)); // Baby Pink
+//        logIn.setBackground(new Color(255, 223, 0)); // Baby Pink
 
 //        JLabel title = new JLabel(signupViewModel.TITLE_LABEL);
 //        title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -171,6 +177,21 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
         // Create a panel for the title with FlowLayout to center align horizontally
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         titlePanel.add(title);
+
+//        // Create a panel for the form with GridBagLayout to center align vertically
+//        JPanel formPanel = new JPanel(new GridBagLayout());
+//
+//        GridBagConstraints gbc = new GridBagConstraints();
+//        gbc.gridx = 0;
+//        gbc.gridy = 0;
+//        gbc.insets = new Insets(5, 5, 5, 5);  // Add some padding
+//        formPanel.add(nameInfo, gbc);
+//
+//        gbc.gridy = 1;
+//        formPanel.add(emailInfo, gbc);
+//
+//        gbc.gridy = 2;
+//        formPanel.add(passwordInfo, gbc);
 
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
