@@ -5,87 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f84e0dc-ec04-4dcc-9856-d0afd3763e24" name="Changes" comment="ff">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/app/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/interface_adapters/browse/BrowseViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/entities/CommonUserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TODO.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/data_access/AblyDataAccessObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/entities/CommonLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/entities/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/use_cases/track_order/TrackOrderDataAccessInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/use_cases/track_order/TrackOrderDataAccessObjectSubscriber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/use_cases/track_order/TrackOrderInputBoundary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/use_cases/track_order/TrackOrderInputData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/use_cases/track_order/TrackOrderInteractor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/data_access/AblyDataAccessObjectTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/data_access/FileUserDataAccessObjectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/LoginUseCaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/LoginUseCaseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/SignupUseCaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/SignupUseCaseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/FileUserDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/data_access/FileUserDataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/InMemoryUserDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/data_access/InMemoryUserDataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/CommonCourier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/CommonCourier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/CommonItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/CommonItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/CommonUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/CommonUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/CommonUserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/CommonUserFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/Courier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/UserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/UserFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/ValidatorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/ViewManagerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/ViewManagerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/ViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/ViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/browse/BrowseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/browse/BrowseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/browse/BrowsePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/browse/BrowsePresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/browse/BrowseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/browse/BrowseState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/browse/BrowseViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/login/LoginPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/login/LoginPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/login/LoginState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/login/LoginState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/login/LoginViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/login/LoginViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/notification/NotifController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/notification/NotifController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/notification/NotifPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/notification/NotifPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/notification/NotifState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/notification/NotifState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/notification/NotifViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/notification/NotifViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/place_order/PlaceOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/place_order/PlaceOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/place_order/PlaceOrderPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/place_order/PlaceOrderPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/place_order/PlaceOrderState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/place_order/PlaceOrderState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/place_order/PlaceOrderViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/place_order/PlaceOrderViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/signup/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/signup/SignupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/signup/SignupPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/signup/SignupPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/signup/SignupState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/signup/SignupState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/signup/SignupViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/signup/SignupViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/track/TrackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/track/TrackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/track/TrackPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/track/TrackPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/track/TrackState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/track/TrackState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapters/track/TrackViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interface_adapters/track/TrackViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/add_to_cart/ATCDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/add_to_cart/ATCDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/add_to_cart/ATCInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/add_to_cart/ATCInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/add_to_cart/ATCInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/add_to_cart/ATCInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/add_to_cart/ATCInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/add_to_cart/ATCInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/add_to_cart/ATCOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/add_to_cart/ATCOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/add_to_cart/ATCOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/add_to_cart/ATCOutputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/log_in/LoginDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/log_in/LoginDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/log_in/LoginInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/log_in/LoginInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/log_in/LoginInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/log_in/LoginInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/log_in/LoginInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/log_in/LoginInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/log_in/LoginOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/log_in/LoginOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/log_in/LoginOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/log_in/LoginOutputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/place_order/PlaceOrderDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/place_order/PlaceOrderDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/place_order/PlaceOrderInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/place_order/PlaceOrderInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/place_order/PlaceOrderInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/place_order/PlaceOrderInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/place_order/PlaceOrderInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/place_order/PlaceOrderInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/place_order/PlaceOrderOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/place_order/PlaceOrderOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/place_order/PlaceOrderOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/place_order/PlaceOrderOutputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/sign_up/SignupDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/sign_up/SignupDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/sign_up/SignupInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/sign_up/SignupInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/sign_up/SignupInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/sign_up/SignupInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/sign_up/SignupInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/sign_up/SignupInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/sign_up/SignupOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/sign_up/SignupOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_cases/sign_up/SignupOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/sign_up/SignupOutputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/BrowseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/BrowseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LabelTextPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/LabelTextPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/NotifView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/NotifView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PlaceOrderView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/PlaceOrderView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SignupView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/SignupView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/TrackView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/TrackView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/ViewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/data_access/FileUserDataAccessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/data_access/FileUserDataAccessObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/use_cases/place_order/PlaceOrderDataAccessInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/use_cases/place_order/PlaceOrderDataAccessInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/entities/CommonUserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/entities/CommonUserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/CSC207_Project-0.0.1.tar" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/CSC207_Project-0.0.1.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/CSC207_Project-0.0.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/CSC207_Project-0.0.1.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/scoops_ahoy-0.0.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/scoops_ahoy-0.0.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/entities.CommonUserTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/entities.CommonUserTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/entities.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/entities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-entities.CommonUserTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-entities.CommonUserTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/compileTransaction/stash-dir/CommonUserTest.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/data_access/FileUserDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/data_access/FileUserDataAccessObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/use_cases/place_order/PlaceOrderDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/use_cases/place_order/PlaceOrderDataAccessInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/entities/CommonUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/entities/CommonUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +68,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit3 Test Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -138,15 +94,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "OverrideImplement.generate.javadoc": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "123",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "281",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "1.8",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -155,8 +119,19 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="data_access" />
+      <recent name="use_cases.track_order" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="data_access" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.test">
@@ -275,6 +250,9 @@
       <updated>1700500795032</updated>
       <workItem from="1700500796701" duration="756000" />
       <workItem from="1700501585706" duration="319000" />
+      <workItem from="1700945568817" duration="391000" />
+      <workItem from="1700948192500" duration="21122000" />
+      <workItem from="1701367776088" duration="201000" />
     </task>
     <task id="LOCAL-00001" summary="ff">
       <option name="closed" value="true" />
@@ -314,6 +292,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="ff" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CSC207_Project$test.ic" NAME="test Coverage Results" MODIFIED="1700945347188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/CSC207_Project$test.ic" NAME="test Coverage Results" MODIFIED="1700948392878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
