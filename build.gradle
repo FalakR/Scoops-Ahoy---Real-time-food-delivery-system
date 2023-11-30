@@ -13,12 +13,17 @@ repositories {
 dependencies {
     // Ably API
     implementation 'io.ably:ably-java:1.2.0'
+    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.9'
+
     // Google Maps API
     implementation 'com.google.maps:google-maps-services:2.2.0'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
 
     // JUnit
     testImplementation 'junit:junit:4.13'
+
+    // Json processing
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }
 
 sourceSets {

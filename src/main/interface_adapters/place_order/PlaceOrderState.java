@@ -1,15 +1,24 @@
 package interface_adapters.place_order;
 
+import entities.CommonCart;
+import entities.IceCream;
+
+import java.util.List;
+
 public class PlaceOrderState {
+    private CommonCart cart;
+    private List<IceCream> iceCreams;
     private String address = "";
     private String addressError = null;
     private String cardNumber = "";
     private String cardNumberError = null;
-    private int cvv = 0; // Assuming CVV is an integer
+    private int cvv = 0;
     private String expiryDate = "";
     private String expiryDateError = null;
 
     public PlaceOrderState(PlaceOrderState copy) {
+        cart = copy.cart;
+        iceCreams = copy.iceCreams;
         address = copy.address;
         addressError = copy.addressError;
         cardNumber = copy.cardNumber;
@@ -21,7 +30,12 @@ public class PlaceOrderState {
 
     // Because of the previous copy constructor, the default constructor must be explicit.
     public PlaceOrderState() {}
-
+    public CommonCart getCart() {
+        return cart;
+    }
+    public List<IceCream> getIceCreams() {
+        return iceCreams;
+    }
     public String getAddress() {
         return address;
     }

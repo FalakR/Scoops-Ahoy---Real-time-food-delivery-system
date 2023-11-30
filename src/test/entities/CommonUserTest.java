@@ -24,13 +24,11 @@ public class CommonUserTest {
 
     @Test
     public void testName() {
-        // This is supposed to pass.
         assertEquals("name", this.user.getName());
     }
 
     @Test
     public void testEmail() {
-        // This test is supposed to fail.
-        assertEquals("not email", this.user.getEmail());
+        assertEquals("email", this.user.getEmail());
     }
 }
