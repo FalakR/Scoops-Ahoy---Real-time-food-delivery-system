@@ -2,7 +2,7 @@ package data_access;
 
 import entities.User;
 import entities.UserFactory;
-import use_cases.add_to_cart.ATCDataAccessInterface;
+import use_cases.add_to_cart.AddToCartDataAccessInterface;
 import use_cases.log_in.LoginDataAccessInterface;
 import use_cases.sign_up.SignupDataAccessInterface;
 import use_cases.place_order.PlaceOrderDataAccessInterface;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class FileUserDataAccessObject implements SignupDataAccessInterface, LoginDataAccessInterface, ATCDataAccessInterface {
+public class FileUserDataAccessObject implements SignupDataAccessInterface, LoginDataAccessInterface, AddToCartDataAccessInterface, PlaceOrderDataAccessInterface {
 
     private final File csvFile;
 
