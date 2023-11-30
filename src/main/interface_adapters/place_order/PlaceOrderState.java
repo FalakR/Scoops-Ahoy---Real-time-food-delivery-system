@@ -25,7 +25,7 @@ public class PlaceOrderState {
         cardNumberError = copy.cardNumberError;
         cvv = copy.cvv;
         expiryDate = copy.expiryDate;
-        expiryDateError = copy.expiryDateError;
+
     }
 
     // Because of the previous copy constructor, the default constructor must be explicit.
@@ -60,9 +60,6 @@ public class PlaceOrderState {
         return expiryDate;
     }
 
-    public String getExpiryDateError() {
-        return expiryDateError;
-    }
 
     public void setAddress(String address) {
         this.address = address;
