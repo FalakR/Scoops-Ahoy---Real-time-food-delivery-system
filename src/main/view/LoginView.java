@@ -41,15 +41,19 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
         JLabel title = new JLabel("Scoops Ahoy");
         title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24)); // Set font to Engravers Gothic BT
 
+        emailInputField.setPreferredSize(new Dimension(300, 50));
         LabelTextPanel emailInfo = new LabelTextPanel(
                 new JLabel("Email"), emailInputField);
+        passwordInputField.setPreferredSize(new Dimension(300, 50));
         LabelTextPanel passwordInfo = new LabelTextPanel(
                 new JLabel("Password"), passwordInputField);
 
         JPanel buttons = new JPanel();
         logIn = new JButton(loginViewModel.LOGIN_BUTTON_LABEL);
+        logIn.setPreferredSize(new Dimension(100, 50));
         buttons.add(logIn);
         cancel = new JButton(loginViewModel.CANCEL_BUTTON_LABEL);
+        cancel.setPreferredSize(new Dimension(100, 50));
         buttons.add(cancel);
 
         logIn.addActionListener(this);
@@ -58,14 +62,14 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
         this.setBackground(new Color(253, 227, 245)); // Pastel Pink
         emailInfo.setBackground(new Color(255, 250, 205)); // Lemon Chiffon
         passwordInfo.setBackground(new Color(240, 255, 240)); // Honeydew
-        buttons.setBackground(new Color(255, 223, 0)); // Pastel Yellow
+        buttons.setBackground(new Color(230, 230, 250)); // Mint Green
 
         // Set text color
         title.setForeground(new Color(77, 77, 77)); // Dark Gray
 
-        // Set button color
-        logIn.setBackground(new Color(255, 182, 193)); // Baby Pink
-        cancel.setBackground(new Color(255, 182, 193)); // Baby Pink
+//        // Set button color
+//        logIn.setBackground(new Color(255, 182, 193)); // Baby Pink
+//        cancel.setBackground(new Color(255, 182, 193)); // Baby Pink
 
         emailInputField.addKeyListener(new KeyListener() {
             @Override
@@ -106,6 +110,8 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
         // Set the operation to close the application when the frame is closed
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+
 
     /**
      * React to a button click that results in evt.
