@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f84e0dc-ec04-4dcc-9856-d0afd3763e24" name="Changes" comment="Completed BrowseView">
-      <change afterPath="$PROJECT_DIR$/icecreamsinfo" afterDir="false" />
+    <list default="true" id="6f84e0dc-ec04-4dcc-9856-d0afd3763e24" name="Changes" comment="csv created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -245,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701373967829</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="csv created">
+      <option name="closed" value="true" />
+      <created>1701374740865</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701374740865</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +274,8 @@
     <MESSAGE value="changes made to NotifState, NotifView and NotifViewModel" />
     <MESSAGE value="Wrote code for AddToCartState and ViewModel" />
     <MESSAGE value="Completed BrowseView" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed BrowseView" />
+    <MESSAGE value="csv created" />
+    <option name="LAST_COMMIT_MESSAGE" value="csv created" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC207_Project$test.ic" NAME="test Coverage Results" MODIFIED="1700949016109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
