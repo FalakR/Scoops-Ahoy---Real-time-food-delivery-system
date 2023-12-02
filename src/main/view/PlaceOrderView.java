@@ -76,7 +76,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                             currentState.getCvv(),
                             currentState.getExpiryDate()
                     );
-                    placeOrderPresenter.prepareChangeView();
+                    placeOrderPresenter.prepareSummaryView();
                 }
             }
         });

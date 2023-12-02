@@ -24,7 +24,7 @@ public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
 
 
     @Override
-    public void prepareSuccessView(PlaceOrderOutputData response) {
+    public void prepareSummaryView(PlaceOrderOutputData response) {
         PlaceOrderState placeOrderState = placeOrderViewModel.getState();
         placeOrderState.setOrderSummary(response.getOrderSummary());
         placeOrderViewModel.firePropertyChanged();

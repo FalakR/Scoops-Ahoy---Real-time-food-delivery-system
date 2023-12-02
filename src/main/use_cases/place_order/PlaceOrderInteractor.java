@@ -49,7 +49,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
             // Process the order
             String orderSummary = createOrderSummary(iceCreams, userAddress);
             PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary, userAddress);
-            placeOrderPresenter.prepareSuccessView(placeOrderOutputData);
+            placeOrderPresenter.prepareSummaryView(placeOrderOutputData);
             publishOrder(userAddress,iceCreams);
             placeOrderPresenter.prepareChangeView();
         }
