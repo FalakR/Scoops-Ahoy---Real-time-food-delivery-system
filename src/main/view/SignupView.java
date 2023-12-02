@@ -231,8 +231,37 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         SignupState state = (SignupState) evt.getNewValue();
-        if (state.getNameError() != null) {
-            JOptionPane.showMessageDialog(this, state.getNameError());
+//        Object newValue = evt.getNewValue();
+//
+//        if (newValue instanceof SignupState) {
+//            SignupState state = (SignupState) newValue;
+//            // Your logic here
+//        } else {
+//            // Handle unexpected types or log a message
+//            System.err.println("Unexpected type received in propertyChange: " + newValue.getClass());
+//        }
+
+        if (state.getEmailError() != null) {
+            JButton okButton = new JButton("OK");
+
+            okButton.addActionListener(e -> {
+                Container container = (Container) e.getSource();
+                Frame frame = JOptionPane.getFrameForComponent(container);
+                frame.dispose();  // Close the frame associated with the JOptionPane
+            });
+
+            JOptionPane.showOptionDialog(
+                    this,
+                    "User with this email already exists. Please try logging in, or signing up with a different email.",
+                    state.getEmailError(),
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.ERROR_MESSAGE,
+                    null,
+                    new Object[]{okButton},
+                    okButton);
         }
+
+//            JOptionPane.showMessageDialog(this, state.getNameError());
     }
 }
+

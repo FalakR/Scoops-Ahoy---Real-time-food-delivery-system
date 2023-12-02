@@ -30,7 +30,7 @@ public class SignupViewModel extends ViewModel {
     // This is what the Signup Presenter will call to let the ViewModel know
     // to alert the View
     public void firePropertyChanged() {
-        support.firePropertyChange("state", null, this.state);
+        support.firePropertyChange("emailError", null, this.state);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

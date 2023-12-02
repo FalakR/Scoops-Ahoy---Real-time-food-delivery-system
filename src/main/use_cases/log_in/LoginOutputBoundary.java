@@ -3,5 +3,6 @@ package use_cases.log_in;
 public interface LoginOutputBoundary {
     void prepareSuccessView(LoginOutputData user);
 
-    void prepareFailView(String error);
+    void prepareFailViewEmail(String error);
+    void prepareFailViewPassword(String error);
 }
