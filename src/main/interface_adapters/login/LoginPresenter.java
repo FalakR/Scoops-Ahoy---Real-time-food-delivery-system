@@ -21,7 +21,7 @@ public class LoginPresenter implements LoginOutputBoundary {
     }
 
     @Override
-    public void prepareSuccessView(LoginOutputData response) {
+    public void prepareSuccessView() {
         // On success, switch to the logged in view.
 
 //        LoginState loginState = loginViewModel.getState();

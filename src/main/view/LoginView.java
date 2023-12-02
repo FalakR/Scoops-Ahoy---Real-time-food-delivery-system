@@ -1,6 +1,7 @@
 package view;
 
 import interface_adapters.login.LoginController;
+import interface_adapters.login.LoginPresenter;
 import interface_adapters.login.LoginState;
 import interface_adapters.login.LoginViewModel;
 import interface_adapters.signup.SignupState;
@@ -21,6 +22,7 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
     public final String viewName = "log in";
     private final LoginViewModel loginViewModel;
     private final LoginController loginController;
+    private final LoginPresenter loginPresenter;
 
     /**
      * The username chosen by the user
@@ -38,9 +40,10 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
     /**
      * A window with a title and a JButton.
      */
-    public LoginView(LoginViewModel loginViewModel, LoginController loginController) {
+    public LoginView(LoginViewModel loginViewModel, LoginController loginController, LoginPresenter loginPresenter) {
         this.loginViewModel = loginViewModel;
         this.loginController = loginController;
+        this.loginPresenter = loginPresenter;
         this.loginViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Scoops Ahoy");
@@ -65,6 +68,9 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
                         if (evt.getSource().equals(logIn)) {
                             loginController.execute(loginViewModel.getState().getEmail(),
                                     loginViewModel.getState().getPassword());
+                            if (loginViewModel.getState().getEmailError() == null && loginViewModel.getState().getPasswordError() == null){
+                                loginPresenter.prepareSuccessView();
+                            }
                         }
                     }
                 }
