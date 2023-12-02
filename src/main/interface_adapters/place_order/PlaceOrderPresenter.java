@@ -6,33 +6,30 @@ import interface_adapters.track_order.TrackOrderViewModel;
 import use_cases.place_order.PlaceOrderOutputBoundary;
 import interface_adapters.ViewManagerModel;
 import use_cases.place_order.PlaceOrderOutputData;
+import view.TrackOrderView;
 
 public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
 
     private ViewManagerModel viewManagerModel;
     private PlaceOrderViewModel placeOrderViewModel;
+    private TrackOrderViewModel trackOrderViewModel;
 
-    public PlaceOrderPresenter(PlaceOrderViewModel placeOrderViewModel, ViewManagerModel viewManagerModel) {
+    public PlaceOrderPresenter(
+            PlaceOrderViewModel placeOrderViewModel,
+            ViewManagerModel viewManagerModel,
+            TrackOrderViewModel trackOrderViewModel
+            ) {
         this.placeOrderViewModel = placeOrderViewModel;
         this.viewManagerModel = viewManagerModel;
+        this.trackOrderViewModel = trackOrderViewModel;
     }
 
 
     @Override
     public void prepareSuccessView(PlaceOrderOutputData response) {
-//        // switch to the tracking view
-//        TrackOrderState trackState = trackViewModel.getState();
-//
-//        //  TODO: make sure Eren has implemented setAddess and set Order in TrackState.java
-//        //trackState.setAddress(response.getUserAddress());
-//        //trackState.setOrder(response.getOrderSummary());
-//
-//        this.trackViewModel.setState(trackState);
-//        trackViewModel.firePropertyChanged();
-//
-//        viewManagerModel.setActiveView(trackViewModel.getViewName());
-//        viewManagerModel.firePropertyChanged();
-        // TODO: DO THIS
+        // Change to tracking view
+        viewManagerModel.setActiveView(trackOrderViewModel.getViewName());
+        viewManagerModel.firePropertyChanged();
     }
 
     @Override

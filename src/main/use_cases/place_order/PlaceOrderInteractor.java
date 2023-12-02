@@ -36,6 +36,8 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         int cvv = placeOrderInputData.getCvv();
         String expiryDate = placeOrderInputData.getExpiryDate();
 
+        // TODO: when you are about to switch to the track order view, publishOrder.
+
         // Example validation, replace with your actual validation logic
         if (userAddress == null || userAddress.isEmpty()) {
             placeOrderPresenter.prepareFailView("User address cannot be empty.");
@@ -65,8 +67,10 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
 
         // Set DB
         this.placeOrderUserDataAccessObject.setOrderId(orderId);
-//        this.placeOrder
+        this.placeOrderUserDataAccessObject.setLocation(userLocation);
 
+        // publish
+        this.placeOrderDataAccessObject.publish(iceCreams, userLocation);
     }
 
     private Location convertToCoordinates(String userAddress) {
@@ -82,10 +86,11 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String addr = gson.toJson(results[0].addressComponents);
-        System.out.println(addr);
+        System.out.println("GMAPS ADDRESS OUTPUT" + addr);
 
-// Invoke .shutdown() after your application is done making requests
+
         context.shutdown();
+        // TODO: RETURN THE RIGHT LOCATION
         return new CommonLocation(0, 0);
     }
 
