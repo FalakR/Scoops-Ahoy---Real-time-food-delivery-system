@@ -70,7 +70,7 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
 
         cancel.addActionListener(this);
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+//        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
         this.add(userAddressInfo);

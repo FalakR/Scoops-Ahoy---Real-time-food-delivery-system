@@ -32,6 +32,7 @@ public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
         placeOrderViewModel.firePropertyChanged();
 
         // Switch to the place order summary view
+
         viewManagerModel.setActiveView(placeOrderViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }

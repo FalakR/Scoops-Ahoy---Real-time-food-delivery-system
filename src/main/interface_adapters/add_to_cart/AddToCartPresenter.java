@@ -27,7 +27,6 @@ public class AddToCartPresenter implements AddToCartOutputBoundary {
     }
 
     public void prepareSuccessView(AddToCartOutputData cart) {
-
         viewManagerModel.setActiveView(placeOrderViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }

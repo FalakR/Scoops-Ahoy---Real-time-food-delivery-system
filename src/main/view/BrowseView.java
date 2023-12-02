@@ -51,6 +51,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
         this.fileIceCreamDataAccessObject = fileIceCreamDataAccessObject;
 //        this.cartFactory = cartFactory;
         addToCartViewModel.addPropertyChangeListener(this);
+        list = new ArrayList<>();
 
         JLabel title = new JLabel("Scoops Ahoy");
         title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24));
@@ -76,7 +77,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
         buttons.add(MintChocolateChip);
 
         Next = new JButton("Next");
-        MintChocolateChip.setPreferredSize(new Dimension(100, 50));
+        Next.setPreferredSize(new Dimension(100, 50));
         buttons.add(Next);
 
 
@@ -183,8 +184,6 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
 
         // Set the operation to close the application when the frame is closed
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
     }
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Cancel not implemented yet.");

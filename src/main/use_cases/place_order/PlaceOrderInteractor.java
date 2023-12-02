@@ -10,6 +10,7 @@ import com.google.maps.model.GeocodingResult;
 import entities.CommonLocation;
 import entities.IceCream;
 import entities.Location;
+import use_cases.track_order.TrackOrderInteractor;
 
 import java.io.IOException;
 import java.util.List;
@@ -47,6 +48,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
             String orderSummary = createOrderSummary(iceCreams, userAddress);
             PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary, userAddress);
             placeOrderPresenter.prepareSuccessView(placeOrderOutputData);
+
             placeOrderPresenter.prepareChangeView();
         }
     }

@@ -7,6 +7,7 @@ import use_cases.track_order.*;
 import view.TrackOrderView;
 
 public class TrackOrderUseCaseFactory {
+    static TrackOrderInputBoundary interactor;
 
     private TrackOrderUseCaseFactory() {};
 
@@ -25,9 +26,12 @@ public class TrackOrderUseCaseFactory {
                 trackOrderUserDataAccessObject,
                 trackOrderOutputBoundary
         );
+        interactor = trackOrderInteractor;
 
         return new TrackOrderView(trackOrderViewModel);
     }
 
-
+    public static TrackOrderInputBoundary getInteractor() {
+        return interactor;
+    }
 }
