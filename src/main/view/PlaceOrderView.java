@@ -4,12 +4,15 @@ import interface_adapters.place_order.PlaceOrderController;
 import interface_adapters.place_order.PlaceOrderPresenter;
 import interface_adapters.place_order.PlaceOrderState;
 import interface_adapters.place_order.PlaceOrderViewModel;
+import interface_adapters.signup.SignupState;
 import use_cases.place_order.PlaceOrderOutputData;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -76,6 +79,74 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                 }
             }
         });
+        userAddressInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        PlaceOrderState currentState = placeOrderViewModel.getState();
+                        currentState.setAddress(userAddressInputField.getText() + e.getKeyChar());
+                        placeOrderViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
+        creditCardInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        PlaceOrderState currentState = placeOrderViewModel.getState();
+                        currentState.setAddress(String.valueOf(creditCardInputField.getText()) + e.getKeyChar());
+                        placeOrderViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
+        cvvInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        PlaceOrderState currentState = placeOrderViewModel.getState();
+                        currentState.setAddress(String.valueOf(cvvInputField.getText()) + e.getKeyChar());
+                        placeOrderViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
+        expiryDateInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        PlaceOrderState currentState = placeOrderViewModel.getState();
+                        currentState.setAddress(String.valueOf(expiryDateInputField.getText()) + e.getKeyChar());
+                        placeOrderViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
 
         cancel.addActionListener(this);
 
