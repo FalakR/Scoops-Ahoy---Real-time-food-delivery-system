@@ -37,8 +37,6 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         int cvv = placeOrderInputData.getCvv();
         String expiryDate = placeOrderInputData.getExpiryDate();
 
-        // TODO: when you are about to switch to the track order view, publishOrder.
-
         if (userAddress == null || userAddress.isEmpty()) {
             placeOrderPresenter.prepareFailView("User address cannot be empty.");
         } else if (creditCardNumber == null || creditCardNumber.isEmpty() || cvv <= 0 || expiryDate == null || expiryDate.isEmpty()) {
@@ -46,10 +44,9 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         } else {
             // Process the order
             String orderSummary = createOrderSummary(iceCreams, userAddress);
-            publishOrder(userAddress,iceCreams);
             PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary, userAddress);
             placeOrderPresenter.prepareSuccessView(placeOrderOutputData);
-
+            publishOrder(userAddress,iceCreams);
             placeOrderPresenter.prepareChangeView();
         }
     }
