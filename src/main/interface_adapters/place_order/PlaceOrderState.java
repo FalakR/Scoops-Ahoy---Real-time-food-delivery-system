@@ -7,7 +7,7 @@ import entities.IceCream;
 import java.util.List;
 
 public class PlaceOrderState {
-    private Cart cart;
+    private CommonCart cart;
     private List<IceCream> iceCreams;
     private String address = "";
     private String addressError = null;
@@ -32,7 +32,9 @@ public class PlaceOrderState {
 
     // Because of the previous copy constructor, the default constructor must be explicit.
     public PlaceOrderState() {}
-
+    public CommonCart getCart() {
+        return cart;
+    }
     public List<IceCream> getIceCreams() {
         return iceCreams;
     }
