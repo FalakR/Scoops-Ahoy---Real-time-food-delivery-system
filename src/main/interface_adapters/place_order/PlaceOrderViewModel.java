@@ -19,7 +19,7 @@ public class PlaceOrderViewModel extends ViewModel {
     private PlaceOrderState state = new PlaceOrderState();
 
     public PlaceOrderViewModel() {
-        super("place_order");
+        super("place order");
     }
 
     public void setState(PlaceOrderState state) {
