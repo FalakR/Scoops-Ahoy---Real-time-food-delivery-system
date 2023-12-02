@@ -1,6 +1,7 @@
 package interface_adapters.add_to_cart;
 
 import interface_adapters.ViewManagerModel;
+import interface_adapters.place_order.PlaceOrderState;
 import interface_adapters.place_order.PlaceOrderViewModel;
 import use_cases.add_to_cart.AddToCartOutputBoundary;
 import use_cases.add_to_cart.AddToCartOutputData;
@@ -27,6 +28,12 @@ public class AddToCartPresenter implements AddToCartOutputBoundary {
     }
 
     public void prepareSuccessView(AddToCartOutputData cart) {
+
+        PlaceOrderState placeOrderState = placeOrderViewModel.getState();
+        placeOrderState.setCart(cart.getCart());
+        this.placeOrderViewModel.setState(placeOrderState);
+        placeOrderViewModel.firePropertyChanged();
+
         viewManagerModel.setActiveView(placeOrderViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }
