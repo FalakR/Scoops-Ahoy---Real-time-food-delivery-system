@@ -55,31 +55,39 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
         title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24));
 
 
-        JPanel buttons = new JPanel();
+        JPanel buttons = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.CENTER;  // Center-align components
+        gbc.insets = new Insets(10, 10, 10, 10); // Adjust insets as needed
 
+        ChocolateChip = new JButton("<html>Chocolate Chip<br>Flavour: Cookie Dough<br>Price: $10</html>");
+        ChocolateChip.setPreferredSize(new Dimension(400, 150));
+        buttons.add(ChocolateChip, gbc);
 
-        ChocolateChip = new JButton("Chocolate Chip \nFlavour: Cookie Dough \nPrice: $10");
-        ChocolateChip.setPreferredSize(new Dimension(300, 150));
-        buttons.add(ChocolateChip);
+        gbc.gridy++;
+        Vanilla = new JButton("<html>Vanilla<br>Flavour: Classic Vanilla<br>Price: $9</html>");
+        Vanilla.setPreferredSize(new Dimension(400, 150));
+        buttons.add(Vanilla, gbc);
 
-        Vanilla = new JButton("Vanilla \nFlavour: Classic Vanilla \nPrice: $9");
-        Vanilla.setPreferredSize(new Dimension(300, 150));
-        buttons.add(Vanilla);
+        gbc.gridy++;
+        Strawberry = new JButton("<html>Strawberry<br>Flavour: Creamy Strawberry<br>Price: $11</html>");
+        Strawberry.setPreferredSize(new Dimension(400, 150));
+        buttons.add(Strawberry, gbc);
 
-        Strawberry = new JButton("Strawberry \nFlavour: Creamy Strawberry \nPrice: $$11");
-        Strawberry.setPreferredSize(new Dimension(300, 150));
-        buttons.add(Strawberry);
+        gbc.gridy++;
+        MintChocolateChip = new JButton("<html>Mint Chocolate Chip<br>Flavour: Mint Chocolate Chip<br>Price: $12</html>");
+        MintChocolateChip.setPreferredSize(new Dimension(400, 150));
+        buttons.add(MintChocolateChip, gbc);
 
-        MintChocolateChip = new JButton("MintChocolateChip \nFlavour: Mint Chocolate Chip \nPrice: $12");
-        MintChocolateChip.setPreferredSize(new Dimension(300, 150));
-        buttons.add(MintChocolateChip);
-
+        gbc.gridy++;
         Next = new JButton("Next");
         Next.setPreferredSize(new Dimension(100, 50));
-        buttons.add(Next);
+        buttons.add(Next, gbc);
 
+        buttons.setBackground(new Color(255, 182, 193));
 
-        buttons.setBackground(new Color(255, 218, 185));
 
         // Set text color
         title.setForeground(new Color(77, 77, 77)); // Dark Gray
