@@ -24,7 +24,7 @@ public class AblyDataAccessObject implements TrackOrderDataAccessInterface, Plac
     private final AblyRealtime realtime;
     private HashMap<String, ArrayList<TrackOrderDataAccessObjectSubscriber>> subs;
 
-    AblyDataAccessObject() throws AblyException {
+    public AblyDataAccessObject() throws AblyException {
         String API_KEY = "iYu0PA.w1HMSA:iH6lsyBOaa2prAUL98XRO2WCpDDaAJGScChSrASPRwg";
         this.realtime = new AblyRealtime(API_KEY);
         this.subs = new HashMap<>();
@@ -78,8 +78,6 @@ public class AblyDataAccessObject implements TrackOrderDataAccessInterface, Plac
     }
 
     private void subscribeHelper(Message message, String orderId) {
-        System.out.println("Received message xx");
-        System.out.println(message.data);
         try {
             JSONObject json = (JSONObject) JSONValue.parse(message.data.toString());
 

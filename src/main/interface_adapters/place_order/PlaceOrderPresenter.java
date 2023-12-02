@@ -1,17 +1,17 @@
 package interface_adapters.place_order;
 
 
-import interface_adapters.track.TrackState;
-import interface_adapters.track.TrackViewModel;
+import interface_adapters.track_order.TrackOrderState;
+import interface_adapters.track_order.TrackOrderViewModel;
 import use_cases.place_order.PlaceOrderOutputBoundary;
 import interface_adapters.ViewManagerModel;
 
 public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
 
-    private final TrackViewModel trackViewModel;
+    private final TrackOrderViewModel trackViewModel;
     private ViewManagerModel viewManagerModel;
 
-    public PlaceOrderPresenter(TrackViewModel trackViewModel, ViewManagerModel viewManagerModel) {
+    public PlaceOrderPresenter(TrackOrderViewModel trackViewModel, ViewManagerModel viewManagerModel) {
         this.trackViewModel = trackViewModel;
         this.viewManagerModel = viewManagerModel;
     }
@@ -20,7 +20,7 @@ public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
     @Override
     public void prepareSuccessView(String s) {
         // switch to the tracking view
-        TrackState trackState = trackViewModel.getState();
+        TrackOrderState trackState = trackViewModel.getState();
 
         this.trackViewModel.setState(trackState);
         trackViewModel.firePropertyChanged();

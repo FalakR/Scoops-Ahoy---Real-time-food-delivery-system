@@ -42,4 +42,8 @@ public class CommonLocation implements Location {
     public BigDecimal getY() {
         return this.y;
     }
+
+    public String toString() {
+        return "(" + this.x.toString() + " " + this.y.toString() + ")";
+    }
 }

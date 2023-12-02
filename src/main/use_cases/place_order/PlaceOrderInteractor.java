@@ -1,22 +1,36 @@
 package use_cases.place_order;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.AddressComponent;
+import com.google.maps.model.GeocodingResult;
+import entities.CommonLocation;
 import entities.IceCream;
+import entities.Location;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
 
     final PlaceOrderOutputBoundary placeOrderPresenter;
+    final PlaceOrderDataAccessInterface placeOrderDataAccessObject;
+    final PlaceOrderUserDataAccessInterface placeOrderUserDataAccessObject;
 
-    public PlaceOrderInteractor(PlaceOrderOutputBoundary placeOrderPresenter) {
+    public PlaceOrderInteractor(PlaceOrderOutputBoundary placeOrderPresenter, PlaceOrderDataAccessInterface placeOrderDataAccessObject, PlaceOrderUserDataAccessInterface placeOrderUserDataAccessObject) {
         this.placeOrderPresenter = placeOrderPresenter;
+        this.placeOrderDataAccessObject = placeOrderDataAccessObject;
+        this.placeOrderUserDataAccessObject = placeOrderUserDataAccessObject;
     }
 
     @Override
     public void execute(PlaceOrderInputData placeOrderInputData) {
         // Extract necessary information from the input data
         List<IceCream> iceCreams = placeOrderInputData.getIceCreams();
+
         String userAddress = placeOrderInputData.getUserAddress();
         String creditCardNumber = placeOrderInputData.getCreditCardNumber();
         int cvv = placeOrderInputData.getCvv();
@@ -40,6 +54,37 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
                 placeOrderPresenter.prepareFailView("Order failed. Please try again.");
             }
         }
+    }
+
+    private void publishOrder(String userAddress, List<IceCream> iceCreams) {
+        // TODO: gmaps, publish ably, set orderId and userLocation
+        Location userLocation = this.convertToCoordinates(userAddress);
+        String orderId = this.placeOrderDataAccessObject.publish(iceCreams, userLocation);
+
+        // Set DB
+        this.placeOrderUserDataAccessObject.setOrderId(orderId);
+//        this.placeOrder
+
+    }
+
+    private Location convertToCoordinates(String userAddress) {
+        GeoApiContext context = new GeoApiContext.Builder()
+                .apiKey("AIzaSyBED9mktM_yVdhhNkF2QWBfrovI6CIlHVQ")
+                .build();
+        GeocodingResult[] results = new GeocodingResult[0];
+        try {
+            results = GeocodingApi.geocode(context,
+                    userAddress).await();
+        } catch (Exception e) {
+            System.err.println("Cannot get location from address");
+        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String addr = gson.toJson(results[0].addressComponents);
+        System.out.println(addr);
+
+// Invoke .shutdown() after your application is done making requests
+        context.shutdown();
+        return new CommonLocation(0, 0);
     }
 
     private String createOrderSummary(List<IceCream> iceCreams) {
