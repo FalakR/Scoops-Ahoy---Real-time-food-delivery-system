@@ -24,7 +24,8 @@ public class PlaceOrderUseCaseFactory {
    ){
 
         PlaceOrderController placeOrderController = createPlaceOrderUseCase(viewManagerModel, placeOrderViewModel, trackViewModel, orderDataAccessObject, userDataAccessObject);
-            return new PlaceOrderView(placeOrderViewModel, placeOrderController);
+        PlaceOrderPresenter placeOrderPresenter = new PlaceOrderPresenter(placeOrderViewModel,viewManagerModel,trackViewModel);
+            return new PlaceOrderView(placeOrderViewModel, placeOrderController, placeOrderPresenter);
 
     }
 

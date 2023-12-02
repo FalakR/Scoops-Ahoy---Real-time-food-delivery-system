@@ -15,7 +15,6 @@ public class TrackOrderView extends JFrame implements ActionListener, PropertyCh
     public final String viewName = "track order";
 
     public TrackOrderView(TrackOrderViewModel viewModel) {
-
         this.viewModel = viewModel;
         this.viewModel.addPropertyChangeListener(this);
 

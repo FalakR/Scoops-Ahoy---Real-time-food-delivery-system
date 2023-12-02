@@ -12,6 +12,8 @@ import interface_adapters.signup.SignupViewModel;
 
 import interface_adapters.track_order.TrackOrderViewModel;
 import io.ably.lib.types.AblyException;
+import use_cases.track_order.TrackOrderInputBoundary;
+import use_cases.track_order.TrackOrderInteractor;
 import view.*;
 
 import javax.swing.*;
@@ -48,7 +50,6 @@ public class Main {
         TrackOrderViewModel trackOrderViewModel = new TrackOrderViewModel();
 
 
-
         FileUserDataAccessObject userDataAccessObject;
         try {
             userDataAccessObject = new FileUserDataAccessObject("./users.csv", new CommonUserFactory());
@@ -79,6 +80,9 @@ public class Main {
         views.add(loginView.getContentPane(), loginView.viewName);
         BrowseView browseView = AddToCartUseCaseFactory.create(viewManagerModel, browseViewModel, placeOrderViewModel, fileIceCreamDataAccessObject);
         views.add(browseView.getContentPane(), browseView.viewName);
+        PlaceOrderView placeOrderView = PlaceOrderUseCaseFactory.create(viewManagerModel,
+                placeOrderViewModel,trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
+        views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
 
         TrackOrderView trackOrderView = TrackOrderUseCaseFactory.create(
                 viewManagerModel,
@@ -87,17 +91,13 @@ public class Main {
                 inMemoryDataAccessObject
         );
         views.add(trackOrderView.getContentPane(), trackOrderView.viewName);
-
-        PlaceOrderView placeOrderView = PlaceOrderUseCaseFactory.create(viewManagerModel,
-                placeOrderViewModel,trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
-        views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
-
-        viewManagerModel.setActiveView(signupView.viewName);
-        viewManagerModel.firePropertyChanged();
+        TrackOrderInputBoundary trackOrderInteractor = TrackOrderUseCaseFactory.getInteractor();
 
         application.pack();
         application.setLocationRelativeTo(null);
         application.setSize(1000,700);
         application.setVisible(true);
+
+        viewManagerModel.setActiveView(loginViewModel.getViewName());
     }
 }

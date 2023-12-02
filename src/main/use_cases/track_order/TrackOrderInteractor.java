@@ -21,6 +21,7 @@ public class TrackOrderInteractor implements TrackOrderInputBoundary, TrackOrder
 
     @Override
     public void execute() {
+        System.out.println("Track order interactor.execute");
         // Executed once when the view is in view.
         String orderId = this.trackOrderUserDataAccessObject.getOrderId();
         this.userLocation = this.trackOrderUserDataAccessObject.getUserLocation();
