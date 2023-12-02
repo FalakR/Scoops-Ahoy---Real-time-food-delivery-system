@@ -79,6 +79,9 @@ public class Main {
         views.add(loginView.getContentPane(), loginView.viewName);
         BrowseView browseView = AddToCartUseCaseFactory.create(viewManagerModel, browseViewModel, placeOrderViewModel, fileIceCreamDataAccessObject);
         views.add(browseView.getContentPane(), browseView.viewName);
+        PlaceOrderView placeOrderView = PlaceOrderUseCaseFactory.create(viewManagerModel,
+                placeOrderViewModel,trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
+        views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
 
         TrackOrderView trackOrderView = TrackOrderUseCaseFactory.create(
                 viewManagerModel,
@@ -88,9 +91,7 @@ public class Main {
         );
         views.add(trackOrderView.getContentPane(), trackOrderView.viewName);
 
-        PlaceOrderView placeOrderView = PlaceOrderUseCaseFactory.create(viewManagerModel,
-                placeOrderViewModel,trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
-        views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
+
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();

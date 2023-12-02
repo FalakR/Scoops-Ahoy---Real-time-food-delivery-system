@@ -1,6 +1,7 @@
 package view;
 
 import interface_adapters.place_order.PlaceOrderController;
+import interface_adapters.place_order.PlaceOrderPresenter;
 import interface_adapters.place_order.PlaceOrderState;
 import interface_adapters.place_order.PlaceOrderViewModel;
 
@@ -25,7 +26,7 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
     private final JButton placeOrder;
     private final JButton cancel;
 
-    public PlaceOrderView(PlaceOrderViewModel placeOrderViewModel, PlaceOrderController placeOrderController) {
+    public PlaceOrderView(PlaceOrderViewModel placeOrderViewModel, PlaceOrderController placeOrderController, PlaceOrderPresenter placeOrderPresenter) {
         this.placeOrderViewModel = placeOrderViewModel;
         this.placeOrderController = placeOrderController;
         placeOrderViewModel.addPropertyChangeListener(this);
@@ -63,7 +64,9 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
                             currentState.getCvv(),
                             currentState.getExpiryDate()
                     );
-
+//                    if (currentState.getAddressError() ==null&& currentState.getCardNumberError()==null){
+//                        placeOrderPresenter.prepareSuccessView();
+//                    }
                 }
             }
         });
@@ -87,7 +90,7 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        // Handle property changes in the PlaceOrderViewModel if needed
+
     }
 
 }
