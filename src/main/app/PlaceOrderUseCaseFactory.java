@@ -8,6 +8,7 @@ import interface_adapters.place_order.PlaceOrderPresenter;
 import interface_adapters.place_order.PlaceOrderViewModel;
 import interface_adapters.track_order.TrackOrderViewModel;
 import use_cases.place_order.*;
+import use_cases.track_order.TrackOrderInteractor;
 import view.PlaceOrderView;
 
 import javax.swing.*;
@@ -18,13 +19,13 @@ public class PlaceOrderUseCaseFactory {
     public static PlaceOrderView create(
             ViewManagerModel viewManagerModel,
             PlaceOrderViewModel placeOrderViewModel,
-            TrackOrderViewModel trackViewModel,
+            TrackOrderInteractor trackOrderInteractor,
             PlaceOrderDataAccessInterface orderDataAccessObject,
             PlaceOrderUserDataAccessInterface userDataAccessObject
    ){
 
-        PlaceOrderController placeOrderController = createPlaceOrderUseCase(viewManagerModel, placeOrderViewModel, trackViewModel, orderDataAccessObject, userDataAccessObject);
-        PlaceOrderPresenter placeOrderPresenter = new PlaceOrderPresenter(placeOrderViewModel,viewManagerModel,trackViewModel);
+        PlaceOrderController placeOrderController = createPlaceOrderUseCase(viewManagerModel, placeOrderViewModel, trackOrderInteractor, orderDataAccessObject, userDataAccessObject);
+        PlaceOrderPresenter placeOrderPresenter = new PlaceOrderPresenter(placeOrderViewModel,viewManagerModel,trackOrderInteractor);
             return new PlaceOrderView(placeOrderViewModel, placeOrderController, placeOrderPresenter);
 
     }
@@ -32,10 +33,10 @@ public class PlaceOrderUseCaseFactory {
     private static PlaceOrderController createPlaceOrderUseCase(
             ViewManagerModel viewManagerModel,
             PlaceOrderViewModel placeOrderViewModel,
-            TrackOrderViewModel trackViewModel,
+            TrackOrderInteractor trackOrderInteractor,
             PlaceOrderDataAccessInterface orderDataAccessObject,
             PlaceOrderUserDataAccessInterface userDataAccessObject) {
-        PlaceOrderOutputBoundary placeOrderOutputBoundary= new PlaceOrderPresenter(placeOrderViewModel, viewManagerModel, trackViewModel);
+        PlaceOrderOutputBoundary placeOrderOutputBoundary= new PlaceOrderPresenter(placeOrderViewModel, viewManagerModel, trackOrderInteractor);
 
         PlaceOrderInputBoundary placeOrderInteractor = new PlaceOrderInteractor(placeOrderOutputBoundary,orderDataAccessObject,userDataAccessObject);
         return new PlaceOrderController(placeOrderInteractor);
