@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class BrowseView extends JFrame implements ActionListener, PropertyChangeListener {
 
-    public final String viewName = "Menu";
+    public final String viewName = "BrowseView";
 
     private final AddToCartViewModel addToCartViewModel;
     private final AddToCartController addToCartController;
