@@ -100,6 +100,9 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
                             signupController.execute(signupViewModel.getState().getName(),
                                     signupViewModel.getState().getEmail(),
                                     signupViewModel.getState().getPassword());
+                            if (signupViewModel.getState().getEmailError() == null && signupViewModel.getState().getPasswordError() == null){
+                                signupPresenter.prepareSuccessView();
+                            }
                         }
                     }
                 }
