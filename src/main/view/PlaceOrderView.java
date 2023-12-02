@@ -25,7 +25,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
     private final JButton placeOrder;
     private final JButton cancel;
 
-    public PlaceOrderView(PlaceOrderViewModel placeOrderViewModel, PlaceOrderController placeOrderController, PlaceOrderPresenter placeOrderPresenter) {
+    public PlaceOrderView(PlaceOrderViewModel placeOrderViewModel, PlaceOrderController placeOrderController) {
         this.placeOrderViewModel = placeOrderViewModel;
         this.placeOrderController = placeOrderController;
         placeOrderViewModel.addPropertyChangeListener(this);
@@ -72,7 +72,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                             currentState.getExpiryDate()
                     );
 //                    if (currentState.getAddressError() ==null&& currentState.getCardNumberError()==null){
-//                        placeOrderPresenter.prepareSuccessView();
+//                        placeOrderPresenter.prepareChangeView();
 //                    }
                 }
             }
