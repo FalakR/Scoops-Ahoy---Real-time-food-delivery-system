@@ -1,5 +1,6 @@
 package view;
 
+import entities.CommonCart;
 import interface_adapters.place_order.PlaceOrderController;
 import interface_adapters.place_order.PlaceOrderPresenter;
 import interface_adapters.place_order.PlaceOrderState;
@@ -68,7 +69,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                     PlaceOrderState currentState = placeOrderViewModel.getState();
 
                     PlaceOrderView.this.placeOrderController.execute(
-                            currentState.getCart(),
+                            (CommonCart) currentState.getCart(),
                             currentState.getIceCreams(),
                             currentState.getAddress(),
                             currentState.getCardNumber(),
