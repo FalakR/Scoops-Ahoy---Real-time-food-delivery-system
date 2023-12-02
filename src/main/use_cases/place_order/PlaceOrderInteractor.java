@@ -38,7 +38,6 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
 
         // TODO: when you are about to switch to the track order view, publishOrder.
 
-        // Example validation, replace with your actual validation logic
         if (userAddress == null || userAddress.isEmpty()) {
             placeOrderPresenter.prepareFailView("User address cannot be empty.");
         } else if (creditCardNumber == null || creditCardNumber.isEmpty() || cvv <= 0 || expiryDate == null || expiryDate.isEmpty()) {
@@ -48,15 +47,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
             String orderSummary = createOrderSummary(iceCreams, userAddress);
             PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary, userAddress);
             placeOrderPresenter.prepareSuccessView(placeOrderOutputData);
-
-            // Additional logic based on the result
-//            if (orderSummary != null) {
-//                // Order placed successfully, you can perform additional actions here
-//                placeOrderPresenter.prepareSuccessView("Order Summary: " + orderSummary);
-//            } else {
-//                // Order failed, handle accordingly
-//                placeOrderPresenter.prepareFailView("Order failed. Please try again.");
-//            }
+            placeOrderPresenter.prepareChangeView();
         }
     }
 
@@ -124,13 +115,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
     }
 
 
-//    private List<String> listIceCreamNames(List<IceCream> iceCreams) {
-//        List<String> icecreams =  new ArrayList<>();
-//        for(IceCream i: iceCreams){
-//            icecreams.add(i.getName());
-//        }
-//        return icecreams;
-//    }
+
 
 
 }

@@ -3,6 +3,7 @@ package view;
 import data_access.FileIceCreamDataAccessObject;
 import entities.Cart;
 import entities.CartFactory;
+import entities.CommonCartFactory;
 import entities.IceCream;
 import interface_adapters.add_to_cart.AddToCartController;
 import interface_adapters.add_to_cart.AddToCartPresenter;
@@ -27,7 +28,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
     private final AddToCartPresenter addToCartPresenter;
     private final FileIceCreamDataAccessObject fileIceCreamDataAccessObject;
 
-    private final CartFactory cartFactory;
+//    private final CartFactory cartFactory;
 
     private final JButton ChocolateChip;
 
@@ -42,13 +43,13 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
     private ArrayList<IceCream> list;
 
 
-    public BrowseView(AddToCartController addToCartController, AddToCartPresenter addToCartPresenter, AddToCartViewModel addToCartViewModel, FileIceCreamDataAccessObject fileIceCreamDataAccessObject, CartFactory cartFactory) {
+    public BrowseView(AddToCartController addToCartController, AddToCartPresenter addToCartPresenter, AddToCartViewModel addToCartViewModel, FileIceCreamDataAccessObject fileIceCreamDataAccessObject) {
 
         this.addToCartController = addToCartController;
         this.addToCartPresenter = addToCartPresenter;
         this.addToCartViewModel = addToCartViewModel;
         this.fileIceCreamDataAccessObject = fileIceCreamDataAccessObject;
-        this.cartFactory = cartFactory;
+//        this.cartFactory = cartFactory;
         addToCartViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Scoops Ahoy");
@@ -150,7 +151,9 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(Next)) {
-                            Cart finalcart = cartFactory.create(list);
+                            CartFactory cartFactory1 = new CommonCartFactory();
+                            Cart finalcart = cartFactory1.create(list);
+//                            Cart finalcart = cartFactory.create(list);
                             AddToCartOutputData outputData = new AddToCartOutputData(finalcart);
                             addToCartPresenter.prepareSuccessView(outputData);
                         }

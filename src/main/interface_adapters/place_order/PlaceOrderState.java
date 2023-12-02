@@ -15,6 +15,7 @@ public class PlaceOrderState {
     private int cvv = 0;
     private String expiryDate = "";
     private String expiryDateError = null;
+    private String ordersummary;
 
     public PlaceOrderState(PlaceOrderState copy) {
         cart = copy.cart;
@@ -89,4 +90,6 @@ public class PlaceOrderState {
         this.expiryDateError = expiryDateError;
     }
 
+    public void setOrderSummary(String orderSummary) {this.ordersummary = orderSummary;
+    }
 }

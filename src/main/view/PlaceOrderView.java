@@ -25,7 +25,7 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
     private final JButton placeOrder;
     private final JButton cancel;
 
-    public PlaceOrderView(PlaceOrderController controller, PlaceOrderViewModel placeOrderViewModel, PlaceOrderController placeOrderController) {
+    public PlaceOrderView(PlaceOrderViewModel placeOrderViewModel, PlaceOrderController placeOrderController) {
         this.placeOrderViewModel = placeOrderViewModel;
         this.placeOrderController = placeOrderController;
         placeOrderViewModel.addPropertyChangeListener(this);

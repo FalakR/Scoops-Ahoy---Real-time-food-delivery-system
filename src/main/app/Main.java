@@ -1,22 +1,18 @@
 package app;
 
-import data_access.AblyDataAccessObject;
-import data_access.FileUserDataAccessObject;
-import data_access.InMemoryDataAccessObject;
-import data_access.InMemoryUserDataAccessObject;
+import data_access.*;
+import entities.CommonIceCreamFactory;
 import entities.CommonUserFactory;
 import interface_adapters.ViewManagerModel;
 
 import interface_adapters.add_to_cart.AddToCartViewModel;
 import interface_adapters.login.LoginViewModel;
+import interface_adapters.place_order.PlaceOrderViewModel;
 import interface_adapters.signup.SignupViewModel;
 
 import interface_adapters.track_order.TrackOrderViewModel;
 import io.ably.lib.types.AblyException;
-import view.LoginView;
-import view.SignupView;
-import view.TrackOrderView;
-import view.ViewManager;
+import view.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,7 +44,9 @@ public class Main {
         LoginViewModel loginViewModel = new LoginViewModel();
         SignupViewModel signupViewModel = new SignupViewModel();
         AddToCartViewModel browseViewModel = new AddToCartViewModel();
+        PlaceOrderViewModel placeOrderViewModel = new PlaceOrderViewModel();
         TrackOrderViewModel trackOrderViewModel = new TrackOrderViewModel();
+
 
 
         FileUserDataAccessObject userDataAccessObject;
@@ -65,6 +63,13 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+        FileIceCreamDataAccessObject fileIceCreamDataAccessObject;
+        try {
+            fileIceCreamDataAccessObject = new FileIceCreamDataAccessObject("./icecreamsinfo.csv", new CommonIceCreamFactory());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         InMemoryDataAccessObject inMemoryDataAccessObject = new
                 InMemoryDataAccessObject();
 
@@ -72,6 +77,8 @@ public class Main {
         views.add(signupView.getContentPane(), signupView.viewName);
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, browseViewModel, userDataAccessObject);
         views.add(loginView.getContentPane(), loginView.viewName);
+        BrowseView browseView = AddToCartUseCaseFactory.create(viewManagerModel, browseViewModel, placeOrderViewModel, fileIceCreamDataAccessObject);
+        views.add(browseView.getContentPane(), browseView.viewName);
 
         TrackOrderView trackOrderView = TrackOrderUseCaseFactory.create(
                 viewManagerModel,
@@ -79,7 +86,11 @@ public class Main {
                 ablyDataAccessObject,
                 inMemoryDataAccessObject
         );
-        views.add(trackOrderView, trackOrderView.viewName);
+        views.add(trackOrderView.getContentPane(), trackOrderView.viewName);
+
+        PlaceOrderView placeOrderView = PlaceOrderUseCaseFactory.create(viewManagerModel,
+                placeOrderViewModel,trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
+        views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
