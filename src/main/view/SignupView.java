@@ -52,23 +52,29 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
         JPanel buttons = new JPanel();
         signUp = new JButton("Sign Up");
         signUp.setPreferredSize(new Dimension(100, 50));
+//        signUp.setBackground(new Color(255, 223, 0));
+//        signUp.setOpaque(true);
+//        signUp.setBorderPainted(false);
         buttons.add(signUp);
         logIn = new JButton("Log In");
         logIn.setPreferredSize(new Dimension(100, 50));
+//        logIn.setBackground(new Color(255, 223, 0));
+//        logIn.setOpaque(true);
+//        logIn.setBorderPainted(false);
         buttons.add(logIn);
 
         this.setBackground(new Color(253, 227, 245)); // Pastel Pink
         nameInfo.setBackground(new Color(255, 218, 185)); // Peach
         emailInfo.setBackground(new Color(255, 250, 205)); // Lemon Chiffon
         passwordInfo.setBackground(new Color(240, 255, 240)); // Honeydew
-        buttons.setBackground(new Color(255, 223, 0)); // Pastel Yellow
+        buttons.setBackground(new Color(230, 230, 250)); // Mint Green
 
         // Set text color
         title.setForeground(new Color(77, 77, 77)); // Dark Gray
 
-        // Set button color
-        signUp.setBackground(new Color(255, 182, 193)); // Baby Pink
-        logIn.setBackground(new Color(255, 182, 193)); // Baby Pink
+//        // Set button color
+//        signUp.setBackground(new Color(255, 223, 0)); // Baby Pink
+//        logIn.setBackground(new Color(255, 223, 0)); // Baby Pink
 
 //        JLabel title = new JLabel(signupViewModel.TITLE_LABEL);
 //        title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -94,6 +100,9 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
                             signupController.execute(signupViewModel.getState().getName(),
                                     signupViewModel.getState().getEmail(),
                                     signupViewModel.getState().getPassword());
+                            if (signupViewModel.getState().getEmailError() == null && signupViewModel.getState().getPasswordError() == null){
+                                signupPresenter.prepareSuccessView();
+                            }
                         }
                     }
                 }
@@ -172,6 +181,21 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         titlePanel.add(title);
 
+//        // Create a panel for the form with GridBagLayout to center align vertically
+//        JPanel formPanel = new JPanel(new GridBagLayout());
+//
+//        GridBagConstraints gbc = new GridBagConstraints();
+//        gbc.gridx = 0;
+//        gbc.gridy = 0;
+//        gbc.insets = new Insets(5, 5, 5, 5);  // Add some padding
+//        formPanel.add(nameInfo, gbc);
+//
+//        gbc.gridy = 1;
+//        formPanel.add(emailInfo, gbc);
+//
+//        gbc.gridy = 2;
+//        formPanel.add(passwordInfo, gbc);
+
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
         formPanel.add(nameInfo);
@@ -210,8 +234,37 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         SignupState state = (SignupState) evt.getNewValue();
-        if (state.getNameError() != null) {
-            JOptionPane.showMessageDialog(this, state.getNameError());
+//        Object newValue = evt.getNewValue();
+//
+//        if (newValue instanceof SignupState) {
+//            SignupState state = (SignupState) newValue;
+//            // Your logic here
+//        } else {
+//            // Handle unexpected types or log a message
+//            System.err.println("Unexpected type received in propertyChange: " + newValue.getClass());
+//        }
+
+        if (state.getEmailError() != null) {
+            JButton okButton = new JButton("OK");
+
+            okButton.addActionListener(e -> {
+                Container container = (Container) e.getSource();
+                Frame frame = JOptionPane.getFrameForComponent(container);
+                frame.dispose();  // Close the frame associated with the JOptionPane
+            });
+
+            JOptionPane.showOptionDialog(
+                    this,
+                    "User with this email already exists. Please try logging in, or signing up with a different email.",
+                    state.getEmailError(),
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.ERROR_MESSAGE,
+                    null,
+                    new Object[]{okButton},
+                    okButton);
         }
+
+//            JOptionPane.showMessageDialog(this, state.getNameError());
     }
 }
+

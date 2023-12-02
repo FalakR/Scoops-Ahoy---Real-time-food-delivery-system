@@ -59,13 +59,13 @@ public class FileUserDataAccessObject implements SignupDataAccessInterface, Logi
 
     /**
      * Return whether a user exists with email identifier.
-     * @param identifier the username to check.
+     * @param email the username to check.
      * @return whether a user exists with email identifier
      */
 
     @Override
-    public boolean existsByEmail(String identifier) {
-        return false;
+    public boolean existsByEmail(String email) {
+        return accounts.containsKey(email);
     }
 
     @Override

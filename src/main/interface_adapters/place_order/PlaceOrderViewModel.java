@@ -28,8 +28,6 @@ public class PlaceOrderViewModel extends ViewModel {
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    // This is what the PlaceOrder Presenter will call to let the ViewModel know
-    // to alert the View
     public void firePropertyChanged() {
         support.firePropertyChange("state", null, this.state);
     }
@@ -41,4 +39,5 @@ public class PlaceOrderViewModel extends ViewModel {
     public PlaceOrderState getState() {
         return state;
     }
+
 }

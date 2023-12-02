@@ -70,7 +70,7 @@ public class Main {
 
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, browseViewModel, userDataAccessObject);
         views.add(signupView.getContentPane(), signupView.viewName);
-        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, userDataAccessObject);
+        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, browseViewModel, userDataAccessObject);
         views.add(loginView.getContentPane(), loginView.viewName);
 
         TrackOrderView trackOrderView = TrackOrderUseCaseFactory.create(

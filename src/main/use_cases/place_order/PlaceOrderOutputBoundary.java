@@ -1,7 +1,7 @@
 package use_cases.place_order;
 
 public interface PlaceOrderOutputBoundary {
-    void prepareSuccessView(String s);
+    void prepareSuccessView(PlaceOrderOutputData order);
 
     void prepareFailView(String s);
 }

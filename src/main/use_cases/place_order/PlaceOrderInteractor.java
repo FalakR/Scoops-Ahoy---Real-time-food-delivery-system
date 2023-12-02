@@ -29,8 +29,8 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
     @Override
     public void execute(PlaceOrderInputData placeOrderInputData) {
         // Extract necessary information from the input data
-        List<IceCream> iceCreams = placeOrderInputData.getIceCreams();
 
+        List<IceCream> iceCreams = placeOrderInputData.getIceCreams();// list of icecream objects
         String userAddress = placeOrderInputData.getUserAddress();
         String creditCardNumber = placeOrderInputData.getCreditCardNumber();
         int cvv = placeOrderInputData.getCvv();
@@ -43,16 +43,18 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
             placeOrderPresenter.prepareFailView("Invalid credit card information.");
         } else {
             // Process the order
-            String orderSummary = createOrderSummary(iceCreams);
+            String orderSummary = createOrderSummary(iceCreams, userAddress);
+            PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary, userAddress);
+            placeOrderPresenter.prepareSuccessView(placeOrderOutputData);
 
             // Additional logic based on the result
-            if (orderSummary != null) {
-                // Order placed successfully, you can perform additional actions here
-                placeOrderPresenter.prepareSuccessView("Order Summary: " + orderSummary);
-            } else {
-                // Order failed, handle accordingly
-                placeOrderPresenter.prepareFailView("Order failed. Please try again.");
-            }
+//            if (orderSummary != null) {
+//                // Order placed successfully, you can perform additional actions here
+//                placeOrderPresenter.prepareSuccessView("Order Summary: " + orderSummary);
+//            } else {
+//                // Order failed, handle accordingly
+//                placeOrderPresenter.prepareFailView("Order failed. Please try again.");
+//            }
         }
     }
 
@@ -87,7 +89,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         return new CommonLocation(0, 0);
     }
 
-    private String createOrderSummary(List<IceCream> iceCreams) {
+    private String createOrderSummary(List<IceCream> iceCreams, String userAddress) {
         if (iceCreams.isEmpty()) {
             return "No items in the order.";
         }
@@ -106,6 +108,9 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
 
             totalPrice += iceCream.getPrice();
         }
+        // Add user address to the summary
+        orderSummaryBuilder.append("User Address: ").append(userAddress).append("\n");
+
         // Add total price to the summary
         orderSummaryBuilder.append("Total Price: $").append(totalPrice);
 
