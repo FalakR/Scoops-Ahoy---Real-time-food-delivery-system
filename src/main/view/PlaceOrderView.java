@@ -5,7 +5,6 @@ import interface_adapters.place_order.PlaceOrderPresenter;
 import interface_adapters.place_order.PlaceOrderState;
 import interface_adapters.place_order.PlaceOrderViewModel;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class PlaceOrderView  extends JFrame implements ActionListener, PropertyChangeListener {
+public class PlaceOrderView extends JFrame implements ActionListener, PropertyChangeListener {
     public final String viewName = "place order";
 
     private final PlaceOrderViewModel placeOrderViewModel;
@@ -35,6 +34,9 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
         title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+
         LabelTextPanel userAddressInfo = new LabelTextPanel(
                 new JLabel("User Address"), userAddressInputField);
         LabelTextPanel creditCardInfo = new LabelTextPanel(
@@ -44,13 +46,18 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
         LabelTextPanel expiryDateInfo = new LabelTextPanel(
                 new JLabel("Expiry Date"), expiryDateInputField);
 
+        contentPanel.add(title);
+        contentPanel.add(userAddressInfo);
+        contentPanel.add(creditCardInfo);
+        contentPanel.add(cvvInfo);
+        contentPanel.add(expiryDateInfo);
+
         JPanel buttons = new JPanel();
         placeOrder = new JButton("Place Order");
         buttons.add(placeOrder);
         cancel = new JButton("Cancel");
         buttons.add(cancel);
 
-        this.setBackground(new Color(253, 227, 245)); // Pastel Pink
         placeOrder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 if (evt.getSource().equals(placeOrder)) {
@@ -73,14 +80,11 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
 
         cancel.addActionListener(this);
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        contentPanel.add(buttons);
 
-        this.add(title);
-        this.add(userAddressInfo);
-        this.add(creditCardInfo);
-        this.add(cvvInfo);
-        this.add(expiryDateInfo);
-        this.add(buttons);
+        this.add(contentPanel);
+
+        this.setBackground(new Color(253, 227, 245)); // Pastel Pink
     }
 
     @Override
@@ -92,5 +96,4 @@ public class PlaceOrderView  extends JFrame implements ActionListener, PropertyC
     public void propertyChange(PropertyChangeEvent evt) {
 
     }
-
 }
