@@ -25,15 +25,14 @@ public class TrackOrderView extends JFrame implements ActionListener, PropertyCh
 
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new FlowLayout());
-        JPanel mapDropIn = new JPanel(new FlowLayout());
-        mapDropIn.setSize(600, 600);
+
+        JPanel mapDropIn = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        mapDropIn.setPreferredSize(new Dimension(1000, 625));
         mapDropIn.setBackground(Color.GREEN);
+        this.add(mapDropIn);
 
         pack();
-
         setLocationRelativeTo(null);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     @Override
