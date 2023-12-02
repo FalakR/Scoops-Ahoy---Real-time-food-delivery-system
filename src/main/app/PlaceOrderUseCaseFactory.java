@@ -20,16 +20,12 @@ public class PlaceOrderUseCaseFactory {
             PlaceOrderViewModel placeOrderViewModel,
             TrackOrderViewModel trackViewModel,
             PlaceOrderDataAccessInterface orderDataAccessObject,
-            PlaceOrderUserDataAccessInterface userDataAccessObject,
+            PlaceOrderUserDataAccessInterface userDataAccessObject
    ){
-        try {
-            PlaceOrderController placeOrderController = createPlaceOrderUseCase(viewManagerModel, placeOrderViewModel, trackViewModel, orderDataAccessObject);
-            return new PlaceOrderView(placeOrderViewModel, placeOrderController);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Could not open user data file.");
-        }
 
-        return null;
+        PlaceOrderController placeOrderController = createPlaceOrderUseCase(viewManagerModel, placeOrderViewModel, trackViewModel, orderDataAccessObject, userDataAccessObject);
+            return new PlaceOrderView(placeOrderViewModel, placeOrderController);
+
     }
 
     private static PlaceOrderController createPlaceOrderUseCase(
