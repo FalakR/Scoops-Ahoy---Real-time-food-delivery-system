@@ -150,6 +150,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
 
         cancel.addActionListener(this);
 
+//        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         contentPanel.add(buttons);
 
         this.add(contentPanel);
