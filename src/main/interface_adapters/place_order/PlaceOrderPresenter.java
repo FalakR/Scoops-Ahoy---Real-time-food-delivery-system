@@ -1,13 +1,10 @@
 package interface_adapters.place_order;
 
 
-import interface_adapters.track_order.TrackOrderState;
 import interface_adapters.track_order.TrackOrderViewModel;
 import use_cases.place_order.PlaceOrderOutputBoundary;
 import interface_adapters.ViewManagerModel;
 import use_cases.place_order.PlaceOrderOutputData;
-import use_cases.track_order.TrackOrderInteractor;
-import view.TrackOrderView;
 
 public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
 
@@ -18,7 +15,7 @@ public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
     public PlaceOrderPresenter(
             PlaceOrderViewModel placeOrderViewModel,
             ViewManagerModel viewManagerModel,
-            TrackOrderInteractor trackOrderInteractor
+            TrackOrderViewModel trackOrderViewModel
             ) {
         this.placeOrderViewModel = placeOrderViewModel;
         this.viewManagerModel = viewManagerModel;

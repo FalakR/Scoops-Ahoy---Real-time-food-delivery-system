@@ -80,9 +80,6 @@ public class Main {
         views.add(loginView.getContentPane(), loginView.viewName);
         BrowseView browseView = AddToCartUseCaseFactory.create(viewManagerModel, browseViewModel, placeOrderViewModel, fileIceCreamDataAccessObject);
         views.add(browseView.getContentPane(), browseView.viewName);
-        PlaceOrderView placeOrderView = PlaceOrderUseCaseFactory.create(viewManagerModel,
-                placeOrderViewModel,trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
-        views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
 
         TrackOrderView trackOrderView = TrackOrderUseCaseFactory.create(
                 viewManagerModel,
@@ -90,8 +87,15 @@ public class Main {
                 ablyDataAccessObject,
                 inMemoryDataAccessObject
         );
-        views.add(trackOrderView.getContentPane(), trackOrderView.viewName);
         TrackOrderInputBoundary trackOrderInteractor = TrackOrderUseCaseFactory.getInteractor();
+        views.add(trackOrderView.getContentPane(), trackOrderView.viewName);
+
+
+        PlaceOrderView placeOrderView = PlaceOrderUseCaseFactory.create(viewManagerModel,
+                placeOrderViewModel,trackOrderInteractor, trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
+        views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
+
+
 
         application.pack();
         application.setLocationRelativeTo(null);

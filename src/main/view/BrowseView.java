@@ -28,8 +28,6 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
     private final AddToCartPresenter addToCartPresenter;
     private final FileIceCreamDataAccessObject fileIceCreamDataAccessObject;
 
-//    private final CartFactory cartFactory;
-
     private final JButton ChocolateChip;
 
     private final JButton Vanilla;
@@ -91,10 +89,6 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
         Strawberry.setBackground(new Color(255, 182, 193)); // Baby Pink
         MintChocolateChip.setBackground(new Color(255, 182, 193)); // Baby Pink
 
-
-
-
-
         ChocolateChip.addActionListener(
                 // This creates an anonymous subclass of ActionListener and instantiates it.
                 new ActionListener() {
@@ -152,9 +146,10 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(Next)) {
-                            CartFactory cartFactory1 = new CommonCartFactory();
-                            Cart finalcart = cartFactory1.create(list);
-//                            Cart finalcart = cartFactory.create(list);
+                            System.out.println("1");
+                            System.out.println("Cart " + list);
+                            CartFactory cartFactory = new CommonCartFactory();
+                            Cart finalcart = cartFactory.create(list);
                             AddToCartOutputData outputData = new AddToCartOutputData(finalcart);
                             addToCartPresenter.prepareSuccessView(outputData);
                         }

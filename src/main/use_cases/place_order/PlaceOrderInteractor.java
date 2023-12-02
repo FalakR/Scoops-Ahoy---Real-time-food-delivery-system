@@ -4,15 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
-import com.google.maps.errors.ApiException;
-import com.google.maps.model.AddressComponent;
 import com.google.maps.model.GeocodingResult;
 import entities.CommonLocation;
 import entities.IceCream;
 import entities.Location;
+import use_cases.track_order.TrackOrderInputBoundary;
 import use_cases.track_order.TrackOrderInteractor;
 
-import java.io.IOException;
 import java.util.List;
 
 public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
@@ -20,11 +18,17 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
     final PlaceOrderOutputBoundary placeOrderPresenter;
     final PlaceOrderDataAccessInterface placeOrderDataAccessObject;
     final PlaceOrderUserDataAccessInterface placeOrderUserDataAccessObject;
+    private final TrackOrderInputBoundary trackOrderInteractor;
 
-    public PlaceOrderInteractor(PlaceOrderOutputBoundary placeOrderPresenter, PlaceOrderDataAccessInterface placeOrderDataAccessObject, PlaceOrderUserDataAccessInterface placeOrderUserDataAccessObject) {
+    public PlaceOrderInteractor(
+            PlaceOrderOutputBoundary placeOrderPresenter,
+            PlaceOrderDataAccessInterface placeOrderDataAccessObject,
+            PlaceOrderUserDataAccessInterface placeOrderUserDataAccessObject,
+            TrackOrderInputBoundary trackOrderInteractor) {
         this.placeOrderPresenter = placeOrderPresenter;
         this.placeOrderDataAccessObject = placeOrderDataAccessObject;
         this.placeOrderUserDataAccessObject = placeOrderUserDataAccessObject;
+        this.trackOrderInteractor = trackOrderInteractor;
     }
 
     @Override
