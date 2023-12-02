@@ -48,6 +48,7 @@ public class Main {
         TrackOrderViewModel trackOrderViewModel = new TrackOrderViewModel();
 
 
+
         FileUserDataAccessObject userDataAccessObject;
         try {
             userDataAccessObject = new FileUserDataAccessObject("./users.csv", new CommonUserFactory());
@@ -86,6 +87,10 @@ public class Main {
                 inMemoryDataAccessObject
         );
         views.add(trackOrderView.getContentPane(), trackOrderView.viewName);
+
+        PlaceOrderView placeOrderView = PlaceOrderUseCaseFactory.create(viewManagerModel,
+                placeOrderViewModel,trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
+        views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
