@@ -1,6 +1,7 @@
 package view;
 
 import entities.CommonCart;
+import entities.IceCream;
 import interface_adapters.place_order.PlaceOrderController;
 import interface_adapters.place_order.PlaceOrderPresenter;
 import interface_adapters.place_order.PlaceOrderState;
@@ -19,6 +20,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 
 public class PlaceOrderView extends JFrame implements ActionListener, PropertyChangeListener {
     public final String viewName = "place order";
@@ -34,12 +36,13 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
     private final JButton cancel;
 
 
+
     public PlaceOrderView(PlaceOrderViewModel placeOrderViewModel, PlaceOrderController placeOrderController, PlaceOrderPresenter placeOrderPresenter) {
         this.placeOrderViewModel = placeOrderViewModel;
         this.placeOrderController = placeOrderController;
         placeOrderViewModel.addPropertyChangeListener(this);
 
-        JLabel title = new JLabel("Place Order");
+        JLabel title = new JLabel("Scoops Ahoy");
         title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -62,11 +65,13 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                 new JLabel("Expiry Date"), expiryDateInputField);
         expiryDateInfo.setBackground(new Color(253, 210, 245));
 
+
         contentPanel.add(title);
         contentPanel.add(userAddressInfo);
         contentPanel.add(creditCardInfo);
         contentPanel.add(cvvInfo);
         contentPanel.add(expiryDateInfo);
+
 
         JPanel buttons = new JPanel();
         placeOrder = new JButton("Place Order");
@@ -87,7 +92,9 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                             currentState.getCvv(),
                             currentState.getExpiryDate()
                     );
-
+                    String orderSummary = createOrderSummary(currentState.getIceCreams(), currentState.getAddress());
+                    PlaceOrderOutputData outputData = new PlaceOrderOutputData(orderSummary, currentState.getAddress());
+                    placeOrderPresenter.prepareSummaryView(outputData);
                     placeOrderPresenter.prepareChangeView();
 
                 }
@@ -164,7 +171,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
 
         cancel.addActionListener(this);
 
-//        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
         contentPanel.add(buttons);
         buttons.setBackground(new Color(255, 250, 205));
 
@@ -181,6 +188,32 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+
+    }
+    private String createOrderSummary(List<IceCream> iceCreams, String userAddress) {
+        if (iceCreams.isEmpty()) return "No items in the order.";
+        StringBuilder orderSummaryBuilder = new StringBuilder("Order Summary:\n");
+
+        double totalPrice = 0.0;
+
+        for (int i = 0; i < iceCreams.size(); i++) {
+            IceCream iceCream = iceCreams.get(i);
+            orderSummaryBuilder.append(i + 1)
+                    .append(". ")
+                    .append("Name: ").append(iceCream.getName())
+                    .append(", Flavor: ").append(iceCream.getFlavour())
+                    .append(", Price: $").append(iceCream.getPrice())
+                    .append("\n");
+
+            totalPrice += iceCream.getPrice();
+        }
+        // Add user address to the summary
+        orderSummaryBuilder.append("User Address: ").append(userAddress).append("\n");
+
+        // Add total price to the summary
+        orderSummaryBuilder.append("Total Price: $").append(totalPrice);
+
+        return orderSummaryBuilder.toString();
 
     }
 }
