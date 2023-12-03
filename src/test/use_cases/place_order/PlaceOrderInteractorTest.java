@@ -22,7 +22,6 @@ public class PlaceOrderInteractorTest extends TestCase{
 //        IceCreamFactory factory = new CommonIceCreamFactory();
 //
 //        IceCream iceCream1 = factory.create("ChocolateChip","Cookie Dough",10);
-//        System.out.println(iceCream1 + "created");
 //        ArrayList<IceCream> list = new ArrayList<>();
 //        list.add(iceCream1);
 //
