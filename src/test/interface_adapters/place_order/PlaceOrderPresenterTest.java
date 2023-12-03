@@ -77,11 +77,13 @@ public class PlaceOrderPresenterTest {
 
         String summary  = createOrderSummary(list,userAddress);
         PlaceOrderOutputData outputData = new PlaceOrderOutputData(summary, userAddress);
+        PlaceOrderState state= new PlaceOrderState();
         placeOrderPresenter.prepareFailView("Order Failed");
 
         assertEquals(1, placeOrderViewModel.getStateCallCount);
 
         assertEquals(1, placeOrderViewModel.firePropertyChangedCallCount);
+        assertEquals(state.getAddressError(),"Order Failed");
 
     }
     private String createOrderSummary(List<IceCream> iceCreams, String userAddress) {
