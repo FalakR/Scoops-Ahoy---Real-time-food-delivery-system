@@ -32,6 +32,9 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
     private final JPasswordField expiryDateInputField = new JPasswordField(15);
     private final PlaceOrderController placeOrderController;
 
+    private final JLabel orderSummaryLabel = new JLabel(); // Add this line
+    private final JPanel orderSummaryPanel = new JPanel();
+
     private final JButton placeOrder;
     private final JButton cancel;
 
@@ -65,12 +68,15 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                 new JLabel("Expiry Date"), expiryDateInputField);
         expiryDateInfo.setBackground(new Color(253, 210, 245));
 
+        orderSummaryPanel.add(orderSummaryLabel);
 
         contentPanel.add(title);
         contentPanel.add(userAddressInfo);
         contentPanel.add(creditCardInfo);
         contentPanel.add(cvvInfo);
         contentPanel.add(expiryDateInfo);
+        contentPanel.add(orderSummaryPanel);
+
 
 
         JPanel buttons = new JPanel();
@@ -92,7 +98,11 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                             currentState.getCvv(),
                             currentState.getExpiryDate()
                     );
-                    String orderSummary = createOrderSummary(currentState.getIceCreams(), currentState.getAddress());
+                    System.out.println(currentState.getCart().getItems().get(0).getName());
+                    String orderSummary = createOrderSummary(currentState.getCart().getItems(), currentState.getAddress());
+                    System.out.println(orderSummary);
+                    orderSummaryLabel.setText(orderSummary);
+
                     PlaceOrderOutputData outputData = new PlaceOrderOutputData(orderSummary, currentState.getAddress());
                     placeOrderPresenter.prepareSummaryView(outputData);
                     placeOrderPresenter.prepareChangeView();
