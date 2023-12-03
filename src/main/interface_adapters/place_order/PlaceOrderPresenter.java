@@ -37,13 +37,6 @@ public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
     }
 
     @Override
-    public void prepareChangeView() {
-        // Change to tracking view
-        viewManagerModel.setActiveView(trackOrderViewModel.getViewName());
-        viewManagerModel.firePropertyChanged();
-    }
-
-    @Override
     public void prepareFailView(String s) {
         PlaceOrderState placeOrderState = placeOrderViewModel.getState();
         placeOrderState.setAddressError(s);

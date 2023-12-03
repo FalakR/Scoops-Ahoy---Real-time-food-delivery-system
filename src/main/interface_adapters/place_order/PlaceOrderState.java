@@ -13,7 +13,7 @@ public class PlaceOrderState {
     private String addressError = null;
     private String cardNumber = "";
     private String cardNumberError = null;
-    private int cvv=0 ;
+    private String cvv="" ;
     private String expiryDate = "";
     private String expiryDateError = null;
     private String ordersummary;
@@ -54,7 +54,7 @@ public class PlaceOrderState {
         return cardNumberError;
     }
 
-    public int getCvv() {
+    public String getCvv() {
         return cvv;
     }
 
@@ -79,7 +79,7 @@ public class PlaceOrderState {
         this.cardNumberError = cardNumberError;
     }
 
-    public void setCvv(int cvv) {
+    public void setCvv(String cvv) {
         this.cvv = cvv;
     }
 

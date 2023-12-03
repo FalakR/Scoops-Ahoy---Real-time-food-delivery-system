@@ -6,10 +6,10 @@ public class PlaceOrderInputData {
     private final CommonCart cart;
     private final String userAddress;
     private final String creditCardNumber;
-    private final int cvv;
+    private final String cvv;
     private final String expiryDate;
 
-    public PlaceOrderInputData(CommonCart cart,  String userAddress, String creditCardNumber, int cvv, String expiryDate) {
+    public PlaceOrderInputData(CommonCart cart,  String userAddress, String creditCardNumber, String cvv, String expiryDate) {
         this.cart = cart;
         this.userAddress = userAddress;
         this.creditCardNumber = creditCardNumber;
@@ -30,7 +30,7 @@ public class PlaceOrderInputData {
         return creditCardNumber;
     }
 
-    public int getCvv() {
+    public String getCvv() {
         return cvv;
     }
 

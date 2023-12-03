@@ -38,7 +38,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         List<IceCream> iceCreams = placeOrderInputData.getIceCreams();// list of icecream objects
         String userAddress = placeOrderInputData.getUserAddress();
         String creditCardNumber = placeOrderInputData.getCreditCardNumber();
-        int cvv = placeOrderInputData.getCvv();
+        String cvv = placeOrderInputData.getCvv();
         String expiryDate = placeOrderInputData.getExpiryDate();
 
         System.out.println("userAddress: " + userAddress);
