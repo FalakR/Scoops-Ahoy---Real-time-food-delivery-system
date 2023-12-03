@@ -120,10 +120,16 @@ public class LoginInteractorTest {
         private boolean prepareSuccessViewCalled;
         private boolean prepareFailViewEmailCalled;
         private boolean prepareFailViewPasswordCalled;
+        private boolean prepareFailViewEmptyCalled;
 
         @Override
         public void prepareSuccessView() {
             prepareSuccessViewCalled = true;
+        }
+
+        @Override
+        public void prepareFailViewEmpty(String error) {
+            prepareFailViewEmptyCalled = true;
         }
 
         @Override
