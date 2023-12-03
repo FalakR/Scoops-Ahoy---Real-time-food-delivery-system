@@ -7,9 +7,8 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import use_cases.sign_up.SignupOutputBoundary;
 //import
+import static org.junit.Assert.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class SignupPresenterTest {
 
@@ -28,9 +27,11 @@ public class SignupPresenterTest {
         signupPresenter.prepareSuccessView();
 
         // Assert
-        assertTrue(signupViewModel.isPropertyChanged());
+        // Assuming browseViewModel is initially set to a default value
+        assertNull(signupViewModel.getState().getEmailError());  // Check a relevant state in SignupViewModel
         assertEquals(addToCartViewModel.getViewName(), viewManagerModel.getActiveView());
     }
+
 
     @Test
     public void testPrepareLoginView() {

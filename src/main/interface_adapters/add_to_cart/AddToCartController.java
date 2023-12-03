@@ -21,5 +21,4 @@ public class AddToCartController {
         addToCartUseCaseInteractor.execute(addToCartInputData);
 
     }
-
 }
