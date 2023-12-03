@@ -32,8 +32,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
     private final JPasswordField expiryDateInputField = new JPasswordField(15);
     private final PlaceOrderController placeOrderController;
 
-    private final JLabel orderSummaryLabel = new JLabel(); // Add this line
-    private final JPanel orderSummaryPanel = new JPanel();
+    private final JTextField OrderSummaryText = new JTextField(); // Add this line
 
     private final JButton placeOrder;
     private final JButton cancel;
@@ -45,6 +44,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
         this.placeOrderController = placeOrderController;
         placeOrderViewModel.addPropertyChangeListener(this);
 
+
         JLabel title = new JLabel("Scoops Ahoy");
         title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -54,30 +54,27 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBackground(new Color(255, 182, 193));
 
-
         LabelTextPanel userAddressInfo = new LabelTextPanel(
                 new JLabel("User Address"), userAddressInputField);
         userAddressInfo.setBackground(new Color(255, 250, 205));
+
         LabelTextPanel creditCardInfo = new LabelTextPanel(
                 new JLabel("Credit Card Number"), creditCardInputField);
         creditCardInfo.setBackground(new Color(253, 227, 245));
+
         LabelTextPanel cvvInfo = new LabelTextPanel(
                 new JLabel("CVV"), cvvInputField);
         cvvInfo.setBackground(new Color(153, 220, 245));
+
         LabelTextPanel expiryDateInfo = new LabelTextPanel(
                 new JLabel("Expiry Date"), expiryDateInputField);
         expiryDateInfo.setBackground(new Color(253, 210, 245));
-
-        orderSummaryPanel.add(orderSummaryLabel);
 
         contentPanel.add(title);
         contentPanel.add(userAddressInfo);
         contentPanel.add(creditCardInfo);
         contentPanel.add(cvvInfo);
         contentPanel.add(expiryDateInfo);
-        contentPanel.add(orderSummaryPanel);
-
-
 
         JPanel buttons = new JPanel();
         placeOrder = new JButton("Place Order");
@@ -90,7 +87,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                 if (evt.getSource().equals(placeOrder)) {
                     PlaceOrderState currentState = placeOrderViewModel.getState();
 
-                    PlaceOrderView.this.placeOrderController.execute(
+                    placeOrderController.execute(
                             (CommonCart) currentState.getCart(),
                             currentState.getIceCreams(),
                             currentState.getAddress(),
@@ -98,14 +95,37 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                             currentState.getCvv(),
                             currentState.getExpiryDate()
                     );
-                    System.out.println(currentState.getCart().getItems().get(0).getName());
+
                     String orderSummary = createOrderSummary(currentState.getCart().getItems(), currentState.getAddress());
                     System.out.println(orderSummary);
-                    orderSummaryLabel.setText(orderSummary);
+
+                    JFrame frame = new JFrame("Order Summary");
+                    frame.setBackground(new Color(230, 230, 250));
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                    frame.setLayout(new FlowLayout());
+                    String inputString = orderSummary;
+
+                    // Split the string using commas
+                    String[] items = inputString.split(",");
+
+                    // Join the items with line breaks
+                    String displayText = String.join("\n", items);
+
+                    JTextArea textArea = new JTextArea(displayText);
+                    textArea.setBackground(new Color(230, 230, 250));
+                    textArea.setRows(40);  // Set the number of rows
+                    textArea.setColumns(40);
+
+
+                    frame.add(textArea);
+
+                    frame.setSize(600, 400);
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
 
                     PlaceOrderOutputData outputData = new PlaceOrderOutputData(orderSummary, currentState.getAddress());
                     placeOrderPresenter.prepareSummaryView(outputData);
-                    placeOrderPresenter.prepareChangeView();
 
                 }
             }
@@ -132,7 +152,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                     @Override
                     public void keyTyped(KeyEvent e) {
                         PlaceOrderState currentState = placeOrderViewModel.getState();
-                        currentState.setAddress(String.valueOf(creditCardInputField.getText()) + e.getKeyChar());
+                        currentState.setCardNumber(String.valueOf(creditCardInputField.getText()) + e.getKeyChar());
                         placeOrderViewModel.setState(currentState);
                     }
 
@@ -149,7 +169,10 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                     @Override
                     public void keyTyped(KeyEvent e) {
                         PlaceOrderState currentState = placeOrderViewModel.getState();
-                        currentState.setAddress(String.valueOf(cvvInputField.getText()) + e.getKeyChar());
+                        // Get the current text from the cvvInputField
+                        String currentText = cvvInputField.getText();
+                        int currentCvv = Integer.parseInt(currentText);
+                        currentState.setCvv(currentCvv * 10 + Character.getNumericValue(e.getKeyChar()));
                         placeOrderViewModel.setState(currentState);
                     }
 
@@ -166,7 +189,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                     @Override
                     public void keyTyped(KeyEvent e) {
                         PlaceOrderState currentState = placeOrderViewModel.getState();
-                        currentState.setAddress(String.valueOf(expiryDateInputField.getText()) + e.getKeyChar());
+                        currentState.setExpiryDate(String.valueOf(expiryDateInputField.getText()) + e.getKeyChar());
                         placeOrderViewModel.setState(currentState);
                     }
 
@@ -180,6 +203,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                 });
 
         cancel.addActionListener(this);
+
 
 
         contentPanel.add(buttons);
@@ -226,4 +250,5 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
         return orderSummaryBuilder.toString();
 
     }
+
 }

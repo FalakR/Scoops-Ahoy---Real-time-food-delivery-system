@@ -27,11 +27,12 @@ public class PlaceOrderPresenter implements PlaceOrderOutputBoundary {
     public void prepareSummaryView(PlaceOrderOutputData response) {
         PlaceOrderState placeOrderState = placeOrderViewModel.getState();
         placeOrderState.setOrderSummary(response.getOrderSummary());
+        placeOrderState.setAddress(response.getUserAddress());
         placeOrderViewModel.firePropertyChanged();
 
         // Switch to the place order summary view
 
-        viewManagerModel.setActiveView(placeOrderViewModel.getViewName());
+        viewManagerModel.setActiveView(trackOrderViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }
 

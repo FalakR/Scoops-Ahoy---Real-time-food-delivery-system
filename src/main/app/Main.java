@@ -95,6 +95,9 @@ public class Main {
                 placeOrderViewModel,trackOrderInteractor, trackOrderViewModel,ablyDataAccessObject, inMemoryDataAccessObject);
         views.add(placeOrderView.getContentPane(), placeOrderView.viewName);
 
+        NotifView notifView = new NotifView();
+        views.add(notifView, notifView.viewName);
+
 
 
         application.pack();

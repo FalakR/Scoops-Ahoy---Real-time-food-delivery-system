@@ -13,7 +13,7 @@ public class PlaceOrderState {
     private String addressError = null;
     private String cardNumber = "";
     private String cardNumberError = null;
-    private int cvv = 0;
+    private int cvv=0 ;
     private String expiryDate = "";
     private String expiryDateError = null;
     private String ordersummary;

@@ -47,12 +47,14 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
             placeOrderPresenter.prepareFailView("Invalid credit card information.");
         } else {
             // Process the order
+
             String orderSummary = createOrderSummary(iceCreams, userAddress);
 
             PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary, userAddress);
-            placeOrderPresenter.prepareSummaryView(placeOrderOutputData);
             publishOrder(userAddress,iceCreams);
-            placeOrderPresenter.prepareChangeView();
+            placeOrderPresenter.prepareSummaryView(placeOrderOutputData);
+
+//            placeOrderPresenter.prepareChangeView();
         }
     }
 

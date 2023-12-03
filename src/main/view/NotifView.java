@@ -11,11 +11,14 @@ import java.beans.PropertyChangeListener;
 
 
 public class NotifView extends JPanel implements PropertyChangeListener {
+    public final String viewName = "Notification View";
     private final JLabel deliveryStatusLabel;
 
     public NotifView() {
+
         deliveryStatusLabel = new JLabel();
         deliveryStatusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        deliveryStatusLabel.setBackground(new Color(255, 250, 205));
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
