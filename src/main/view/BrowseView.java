@@ -154,8 +154,6 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(Next)) {
-                            System.out.println("1");
-                            System.out.println("Cart " + list);
                             CartFactory cartFactory = new CommonCartFactory();
                             Cart finalcart = cartFactory.create(list);
                             AddToCartOutputData outputData = new AddToCartOutputData(finalcart);

@@ -28,7 +28,6 @@ public class AddToCartPresenter implements AddToCartOutputBoundary {
     }
 
     public void prepareSuccessView(AddToCartOutputData cart) {
-        System.out.println("2");
         PlaceOrderState placeOrderState = placeOrderViewModel.getState();
         placeOrderState.setCart(cart.getCart());
 
