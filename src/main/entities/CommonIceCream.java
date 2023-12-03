@@ -6,7 +6,7 @@ public class CommonIceCream implements IceCream{
     private final String flavour;
     private final Integer price;
 
-    CommonIceCream(String name, String flavour, Integer price) {
+    public CommonIceCream(String name, String flavour, Integer price) {
         this.name = name;
         this.flavour = flavour;
         this.price = price;
