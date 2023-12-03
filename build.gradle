@@ -27,6 +27,7 @@ dependencies {
 
     // swing map viewer
     implementation group: 'org.jxmapviewer', name: 'jxmapviewer2', version: '2.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
 
 sourceSets {

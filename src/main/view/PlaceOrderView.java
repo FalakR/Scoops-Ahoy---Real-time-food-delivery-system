@@ -6,6 +6,9 @@ import interface_adapters.place_order.PlaceOrderPresenter;
 import interface_adapters.place_order.PlaceOrderState;
 import interface_adapters.place_order.PlaceOrderViewModel;
 import interface_adapters.signup.SignupState;
+import use_cases.place_order.PlaceOrderInputBoundary;
+import use_cases.place_order.PlaceOrderInteractor;
+import use_cases.place_order.PlaceOrderOutputBoundary;
 import use_cases.place_order.PlaceOrderOutputData;
 
 import javax.swing.*;
@@ -30,6 +33,7 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
     private final JButton placeOrder;
     private final JButton cancel;
 
+
     public PlaceOrderView(PlaceOrderViewModel placeOrderViewModel, PlaceOrderController placeOrderController, PlaceOrderPresenter placeOrderPresenter) {
         this.placeOrderViewModel = placeOrderViewModel;
         this.placeOrderController = placeOrderController;
@@ -39,17 +43,24 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
         title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        contentPanel.setBackground(new Color(255, 182, 193));
+
 
         LabelTextPanel userAddressInfo = new LabelTextPanel(
                 new JLabel("User Address"), userAddressInputField);
+        userAddressInfo.setBackground(new Color(255, 250, 205));
         LabelTextPanel creditCardInfo = new LabelTextPanel(
                 new JLabel("Credit Card Number"), creditCardInputField);
+        creditCardInfo.setBackground(new Color(253, 227, 245));
         LabelTextPanel cvvInfo = new LabelTextPanel(
                 new JLabel("CVV"), cvvInputField);
+        cvvInfo.setBackground(new Color(153, 220, 245));
         LabelTextPanel expiryDateInfo = new LabelTextPanel(
                 new JLabel("Expiry Date"), expiryDateInputField);
+        expiryDateInfo.setBackground(new Color(253, 210, 245));
 
         contentPanel.add(title);
         contentPanel.add(userAddressInfo);
@@ -76,7 +87,9 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                             currentState.getCvv(),
                             currentState.getExpiryDate()
                     );
-                    placeOrderPresenter.prepareSummaryView();
+
+                    placeOrderPresenter.prepareChangeView();
+
                 }
             }
         });
@@ -153,10 +166,12 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
 
 //        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         contentPanel.add(buttons);
+        buttons.setBackground(new Color(255, 250, 205));
 
         this.add(contentPanel);
 
-        this.setBackground(new Color(253, 227, 245)); // Pastel Pink
+
+
     }
 
     @Override
