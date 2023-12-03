@@ -7,6 +7,7 @@ import io.ably.lib.realtime.AblyRealtime;
 import io.ably.lib.realtime.Channel;
 import io.ably.lib.types.AblyException;
 import io.ably.lib.types.Message;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -81,7 +82,15 @@ public class AblyDataAccessObject implements TrackOrderDataAccessInterface, Plac
         try {
             JSONObject json = (JSONObject) JSONValue.parse(message.data.toString());
 
-            System.out.println(json.get("courierLocation"));
+            if (json == null) return;
+
+            JSONArray msg = (JSONArray) json.get("courierLocation");
+
+            Location loc = new CommonLocation((double) msg.get(0), (double) msg.get(1));
+
+            for (TrackOrderDataAccessObjectSubscriber sub: this.subs.get(orderId)) {
+                sub.onChange(loc);
+            }
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -114,7 +123,7 @@ public class AblyDataAccessObject implements TrackOrderDataAccessInterface, Plac
                 c.subscribe(
                         message -> this.subscribeHelper(message, orderId)
                 );
-                System.out.println("Subscribed to channel" + c.name);
+                System.out.println("Subscribed to channel -> " + c.name);
             } catch (AblyException e) {
                 System.err.println(e.getMessage());
             }
