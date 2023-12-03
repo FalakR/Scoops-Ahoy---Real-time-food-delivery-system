@@ -6,7 +6,7 @@ public class CommonCart implements Cart{
 
     private final ArrayList<IceCream> items;
 
-    CommonCart(ArrayList<IceCream> items) {
+    public CommonCart(ArrayList<IceCream> items) {
         this.items = items;
     }
 
