@@ -157,7 +157,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                             CartFactory cartFactory = new CommonCartFactory();
                             Cart finalcart = cartFactory.create(list);
                             AddToCartOutputData outputData = new AddToCartOutputData(finalcart);
-                            addToCartController.execute(list);
+                            addToCartController.execute(list); // Being only executed once after the selections have been made.
                             addToCartPresenter.prepareSuccessView(outputData);
                         }
                     }
