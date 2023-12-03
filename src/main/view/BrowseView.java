@@ -104,7 +104,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                         if (evt.getSource().equals(ChocolateChip)) {
                             IceCream myicecream = fileIceCreamDataAccessObject.getIceCream("ChocolateChip");
                             list.add(myicecream);
-                            addToCartController.execute(list);
+//                            addToCartController.execute(list);
                         }
                     }
                 }
@@ -117,7 +117,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                         if (evt.getSource().equals(Vanilla)) {
                             IceCream myicecream = fileIceCreamDataAccessObject.getIceCream("Vanilla");
                             list.add(myicecream);
-                            addToCartController.execute(list);
+//                            addToCartController.execute(list);
                         }
                     }
                 }
@@ -130,7 +130,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                         if (evt.getSource().equals(Strawberry)) {
                             IceCream myicecream = fileIceCreamDataAccessObject.getIceCream("Strawberry");
                             list.add(myicecream);
-                            addToCartController.execute(list);
+//                            addToCartController.execute(list);
                         }
                     }
                 }
@@ -143,7 +143,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                         if (evt.getSource().equals(MintChocolateChip)) {
                             IceCream myicecream = fileIceCreamDataAccessObject.getIceCream("MintChocolateChip");
                             list.add(myicecream);
-                            addToCartController.execute(list);
+//                            addToCartController.execute(list);
                         }
                     }
                 }
@@ -157,6 +157,7 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
                             CartFactory cartFactory = new CommonCartFactory();
                             Cart finalcart = cartFactory.create(list);
                             AddToCartOutputData outputData = new AddToCartOutputData(finalcart);
+                            addToCartController.execute(list); // Being only executed once after the selections have been made.
                             addToCartPresenter.prepareSuccessView(outputData);
                         }
                     }

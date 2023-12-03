@@ -60,6 +60,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
 
     private void publishOrder(String userAddress, List<IceCream> iceCreams) {
         // TODO: gmaps, publish ably, set orderId and userLocation
+        System.out.println("Address: " + userAddress);
         Location userLocation = this.convertToCoordinates(userAddress);
         String orderId = this.placeOrderDataAccessObject.publish(iceCreams, userLocation);
 
