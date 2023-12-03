@@ -63,22 +63,22 @@ public class BrowseView extends JFrame implements ActionListener, PropertyChange
         gbc.insets = new Insets(10, 10, 10, 10); // Adjust insets as needed
 
         ChocolateChip = new JButton("<html>Chocolate Chip<br>Flavour: Cookie Dough<br>Price: $10</html>");
-        ChocolateChip.setPreferredSize(new Dimension(400, 150));
+        ChocolateChip.setPreferredSize(new Dimension(400, 100));
         buttons.add(ChocolateChip, gbc);
 
         gbc.gridy++;
         Vanilla = new JButton("<html>Vanilla<br>Flavour: Classic Vanilla<br>Price: $9</html>");
-        Vanilla.setPreferredSize(new Dimension(400, 150));
+        Vanilla.setPreferredSize(new Dimension(400, 100));
         buttons.add(Vanilla, gbc);
 
         gbc.gridy++;
         Strawberry = new JButton("<html>Strawberry<br>Flavour: Creamy Strawberry<br>Price: $11</html>");
-        Strawberry.setPreferredSize(new Dimension(400, 150));
+        Strawberry.setPreferredSize(new Dimension(400, 100));
         buttons.add(Strawberry, gbc);
 
         gbc.gridy++;
         MintChocolateChip = new JButton("<html>Mint Chocolate Chip<br>Flavour: Mint Chocolate Chip<br>Price: $12</html>");
-        MintChocolateChip.setPreferredSize(new Dimension(400, 150));
+        MintChocolateChip.setPreferredSize(new Dimension(400, 100));
         buttons.add(MintChocolateChip, gbc);
 
         gbc.gridy++;
