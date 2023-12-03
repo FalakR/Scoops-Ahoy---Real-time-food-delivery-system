@@ -6,7 +6,7 @@ public class TrackOrderState {
     public Location userLocation;
     public Location deliveryAgentLocation;
 
-    TrackOrderState(Location userLocation, Location deliveryAgentLocation) {
+    public TrackOrderState(Location userLocation, Location deliveryAgentLocation) {
         this.userLocation = userLocation;
         this.deliveryAgentLocation = deliveryAgentLocation;
     }
