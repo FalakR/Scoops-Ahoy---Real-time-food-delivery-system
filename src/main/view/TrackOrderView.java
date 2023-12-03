@@ -1,5 +1,7 @@
 package view;
 
+import entities.CommonLocation;
+import entities.Location;
 import interface_adapters.track_order.TrackOrderState;
 import interface_adapters.track_order.TrackOrderViewModel;
 
@@ -9,6 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+
+import org.jxmapviewer.JXMapViewer;
+import org.jxmapviewer.OSMTileFactoryInfo;
+import org.jxmapviewer.viewer.DefaultTileFactory;
+import org.jxmapviewer.viewer.GeoPosition;
+import org.jxmapviewer.viewer.TileFactoryInfo;
 
 public class TrackOrderView extends JFrame implements ActionListener, PropertyChangeListener {
     private final TrackOrderViewModel viewModel;
@@ -24,11 +32,28 @@ public class TrackOrderView extends JFrame implements ActionListener, PropertyCh
 
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new FlowLayout());
+        this.add(title);
 
-        JPanel mapDropIn = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        mapDropIn.setPreferredSize(new Dimension(1000, 625));
-        mapDropIn.setBackground(Color.GREEN);
-        this.add(mapDropIn);
+
+        // Map stuff
+        Location loc = new CommonLocation(43.6690207,-79.3916043);
+
+        JXMapViewer mapViewer = new JXMapViewer();
+
+        TileFactoryInfo info = new OSMTileFactoryInfo();
+        DefaultTileFactory tileFactory = new DefaultTileFactory(info);
+        mapViewer.setTileFactory(tileFactory);
+
+        tileFactory.setThreadPoolSize(4);
+
+
+        GeoPosition pos = new GeoPosition(loc.getX().doubleValue(), loc.getY().doubleValue());
+
+        mapViewer.setZoom(8);
+        mapViewer.setAddressLocation(pos);
+
+        mapViewer.setPreferredSize(new Dimension(1000, 625));
+        this.add(mapViewer);
 
         pack();
         setLocationRelativeTo(null);
