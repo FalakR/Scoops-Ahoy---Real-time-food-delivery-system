@@ -10,4 +10,8 @@ public class TrackOrderState {
         this.userLocation = userLocation;
         this.deliveryAgentLocation = deliveryAgentLocation;
     }
+
+    public TrackOrderState() {
+
+    }
 }
