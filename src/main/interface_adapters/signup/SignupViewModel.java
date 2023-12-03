@@ -16,6 +16,7 @@ public class SignupViewModel extends ViewModel {
     public final String LOGIN_BUTTON_LABEL = "Log In";
 
     private SignupState state = new SignupState();
+    private boolean propertyChanged;
 
     public SignupViewModel() {
         super("sign up");
@@ -30,6 +31,7 @@ public class SignupViewModel extends ViewModel {
     // This is what the Signup Presenter will call to let the ViewModel know
     // to alert the View
     public void firePropertyChanged() {
+        propertyChanged = true;
         support.firePropertyChange("emailError", null, this.state);
     }
 
@@ -39,5 +41,9 @@ public class SignupViewModel extends ViewModel {
 
     public SignupState getState() {
         return state;
+    }
+
+    public boolean isPropertyChanged() {
+        return propertyChanged;
     }
 }

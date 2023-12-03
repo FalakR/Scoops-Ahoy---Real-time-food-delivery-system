@@ -234,15 +234,6 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         SignupState state = (SignupState) evt.getNewValue();
-//        Object newValue = evt.getNewValue();
-//
-//        if (newValue instanceof SignupState) {
-//            SignupState state = (SignupState) newValue;
-//            // Your logic here
-//        } else {
-//            // Handle unexpected types or log a message
-//            System.err.println("Unexpected type received in propertyChange: " + newValue.getClass());
-//        }
 
         if (state.getEmailError() != null) {
             JButton okButton = new JButton("OK");

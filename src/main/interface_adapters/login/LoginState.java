@@ -5,6 +5,8 @@ public class LoginState {
     private String emailError = null;
     private String password = "";
     private String passwordError = null;
+    private boolean isEmailEmpty = false;
+    private boolean isPasswordEmpty = false;
 
     public LoginState(LoginState copy) {
         email = copy.email;
@@ -46,5 +48,21 @@ public class LoginState {
 
     public void setPasswordError(String passwordError) {
         this.passwordError = passwordError;
+    }
+
+    public boolean isEmailEmpty() {
+        return isEmailEmpty;
+    }
+
+    public void setEmailEmpty(boolean emailEmpty) {
+        isEmailEmpty = emailEmpty;
+    }
+
+    public boolean isPasswordEmpty() {
+        return isPasswordEmpty;
+    }
+
+    public void setPasswordEmpty(boolean passwordEmpty) {
+        isPasswordEmpty = passwordEmpty;
     }
 }
