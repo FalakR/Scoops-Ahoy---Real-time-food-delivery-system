@@ -70,13 +70,11 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                 new JLabel("Expiry Date"), expiryDateInputField);
         expiryDateInfo.setBackground(new Color(253, 210, 245));
 
-
         contentPanel.add(title);
         contentPanel.add(userAddressInfo);
         contentPanel.add(creditCardInfo);
         contentPanel.add(cvvInfo);
         contentPanel.add(expiryDateInfo);
-
 
         JPanel buttons = new JPanel();
         placeOrder = new JButton("Place Order");
