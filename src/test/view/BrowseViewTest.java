@@ -1,7 +1,6 @@
 package view;
 
 import data_access.FileIceCreamDataAccessObject;
-import entities.Cart;
 import entities.CommonIceCreamFactory;
 import entities.IceCream;
 import entities.IceCreamFactory;
@@ -13,8 +12,6 @@ import interface_adapters.place_order.PlaceOrderViewModel;
 import org.junit.Before;
 import org.junit.Test;
 import use_cases.add_to_cart.AddToCartInputBoundary;
-import use_cases.add_to_cart.AddToCartInputData;
-import use_cases.add_to_cart.AddToCartOutputBoundary;
 import use_cases.add_to_cart.AddToCartOutputData;
 
 import java.io.IOException;
