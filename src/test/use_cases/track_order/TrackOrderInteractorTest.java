@@ -49,6 +49,5 @@ public class TrackOrderInteractorTest {
         // Assert
 
         assertEquals(1, subscribeCallCount[0]);
-
     }
 }
