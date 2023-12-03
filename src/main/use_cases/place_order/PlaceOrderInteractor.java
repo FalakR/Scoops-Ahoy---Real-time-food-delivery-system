@@ -38,20 +38,29 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         List<IceCream> iceCreams = placeOrderInputData.getIceCreams();// list of icecream objects
         String userAddress = placeOrderInputData.getUserAddress();
         String creditCardNumber = placeOrderInputData.getCreditCardNumber();
-        int cvv = placeOrderInputData.getCvv();
+        String cvv = placeOrderInputData.getCvv();
         String expiryDate = placeOrderInputData.getExpiryDate();
+
+        System.out.println("userAddress: " + userAddress);
+        System.out.println("creditCardNumber: " + creditCardNumber);
+        System.out.println("cvv: " + cvv);
+        System.out.println("expiryDate: " + expiryDate);
+
 
         if (userAddress == null || userAddress.isEmpty()) {
             placeOrderPresenter.prepareFailView("User address cannot be empty.");
-        } else if (creditCardNumber == null || creditCardNumber.isEmpty() || cvv <= 0 || expiryDate == null || expiryDate.isEmpty()) {
+        } else if (creditCardNumber == null || creditCardNumber.isEmpty() || expiryDate == null || expiryDate.isEmpty()) {
             placeOrderPresenter.prepareFailView("Invalid credit card information.");
         } else {
             // Process the order
+            System.out.println("AABB");
 
             String orderSummary = createOrderSummary(iceCreams, userAddress);
-
             PlaceOrderOutputData placeOrderOutputData = new PlaceOrderOutputData(orderSummary, userAddress);
+
             publishOrder(userAddress,iceCreams);
+            trackOrderInteractor.execute();
+
             placeOrderPresenter.prepareSummaryView(placeOrderOutputData);
 
 //            placeOrderPresenter.prepareChangeView();
@@ -82,6 +91,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
                     userAddress).await();
         } catch (Exception e) {
             System.err.println("Cannot get location from address");
+            System.err.println(e);
         }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String addr = gson.toJson(results[0].addressComponents);

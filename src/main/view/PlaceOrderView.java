@@ -168,11 +168,9 @@ public class PlaceOrderView extends JFrame implements ActionListener, PropertyCh
                 new KeyListener() {
                     @Override
                     public void keyTyped(KeyEvent e) {
+
                         PlaceOrderState currentState = placeOrderViewModel.getState();
-                        // Get the current text from the cvvInputField
-                        String currentText = cvvInputField.getText();
-                        int currentCvv = Integer.parseInt(currentText);
-                        currentState.setCvv(currentCvv * 10 + Character.getNumericValue(e.getKeyChar()));
+                        currentState.setCvv(String.valueOf(cvvInputField.getText()) + e.getKeyChar());
                         placeOrderViewModel.setState(currentState);
                     }
 

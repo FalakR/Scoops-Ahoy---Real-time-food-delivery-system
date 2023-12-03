@@ -14,7 +14,7 @@ public class PlaceOrderController {
         this.placeOrderUseCaseInteractor = placeOrderUseCaseInteractor;
     }
 
-    public void execute(CommonCart cart, List<IceCream> iceCreams, String userAddress, String creditCardNumber, int cvv, String expiryDate){
+    public void execute(CommonCart cart, List<IceCream> iceCreams, String userAddress, String creditCardNumber, String cvv, String expiryDate){
         PlaceOrderInputData placeOrderInputData= new PlaceOrderInputData(cart,  userAddress, creditCardNumber, cvv, expiryDate);
 
         placeOrderUseCaseInteractor.execute(placeOrderInputData);
