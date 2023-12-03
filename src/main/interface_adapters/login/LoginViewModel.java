@@ -15,6 +15,7 @@ public class LoginViewModel extends ViewModel {
     public final String CANCEL_BUTTON_LABEL = "Cancel";
 
     private LoginState state = new LoginState();
+    private boolean propertyChanged;
 
     public LoginViewModel() {
         super("log in");
@@ -29,6 +30,7 @@ public class LoginViewModel extends ViewModel {
     // This is what the Signup Presenter will call to let the ViewModel know
     // to alert the View
     public void firePropertyChanged() {
+        propertyChanged = true;
 
         if (state.getEmailError() != null) {
             support.firePropertyChange("emailError", null, state);
@@ -42,6 +44,10 @@ public class LoginViewModel extends ViewModel {
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
+    }
+
+    public boolean isPropertyChanged() {
+        return propertyChanged;
     }
 
     public LoginState getState() {

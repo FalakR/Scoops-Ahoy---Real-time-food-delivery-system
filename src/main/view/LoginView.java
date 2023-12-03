@@ -69,7 +69,7 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
                         if (evt.getSource().equals(logIn)) {
                             loginController.execute(loginViewModel.getState().getEmail(),
                                     loginViewModel.getState().getPassword());
-                            if (loginViewModel.getState().getEmailError() == null && loginViewModel.getState().getPasswordError() == null){
+                            if (loginViewModel.getState().getEmailError() == null && loginViewModel.getState().getPasswordError() == null && loginViewModel.getState().isEmailEmpty() == false && loginViewModel.getState().isPasswordEmpty() == false){
                                 loginPresenter.prepareSuccessView();
                             }
                         }
@@ -108,27 +108,52 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
             private void updateEmail() {
                 LoginState currentState = loginViewModel.getState();
                 currentState.setEmail(emailInputField.getText());
+                currentState.setEmailEmpty(currentState.getEmail().isEmpty());
                 loginViewModel.setState(currentState);
             }
         });
 
-        passwordInputField.addKeyListener(
-                new KeyListener() {
-                    @Override
-                    public void keyTyped(KeyEvent e) {
-                        LoginState currentState = loginViewModel.getState();
-                        currentState.setPassword(String.valueOf(passwordInputField.getPassword()) + e.getKeyChar());
-                        loginViewModel.setState(currentState);
-                    }
+        passwordInputField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updatePassword();
+            }
 
-                    @Override
-                    public void keyPressed(KeyEvent e) {
-                    }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updatePassword();
+            }
 
-                    @Override
-                    public void keyReleased(KeyEvent e) {
-                    }
-                });
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updatePassword();
+            }
+
+            private void updatePassword() {
+                LoginState currentState = loginViewModel.getState();
+                currentState.setPassword(new String(passwordInputField.getPassword()));
+                currentState.setPasswordEmpty(currentState.getPassword().trim().isEmpty());
+                loginViewModel.setState(currentState);
+            }
+        });
+//
+//        passwordInputField.addKeyListener(
+//                new KeyListener() {
+//                    @Override
+//                    public void keyTyped(KeyEvent e) {
+//                        LoginState currentState = loginViewModel.getState();
+//                        currentState.setPassword(String.valueOf(passwordInputField.getPassword()) + e.getKeyChar());
+//                        loginViewModel.setState(currentState);
+//                    }
+//
+//                    @Override
+//                    public void keyPressed(KeyEvent e) {
+//                    }
+//
+//                    @Override
+//                    public void keyReleased(KeyEvent e) {
+//                    }
+//                });
 
         this.setLayout(new BorderLayout());
 
@@ -167,111 +192,66 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
     public void propertyChange(PropertyChangeEvent evt) {
         LoginState state = (LoginState) evt.getNewValue();
 
+        if (state.isEmailEmpty() || state.isPasswordEmpty()) {
+            JButton okButton2 = new JButton("OK");
+
+            okButton2.addActionListener(e -> {
+                Container container = (Container) e.getSource();
+                Frame frame = JOptionPane.getFrameForComponent(container);
+                frame.dispose();  // Close the frame associated with the JOptionPane
+            });
+
+            JOptionPane.showOptionDialog(
+                    this,
+                    "Email or password cannot be empty.",
+                    state.getEmailError(),
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.ERROR_MESSAGE,
+                    null,
+                    new Object[]{okButton2},
+                    okButton2);
+        }
+
+
         if (state.getEmailError() != null) {
             JButton okButton1 = new JButton("OK");
 
             okButton1.addActionListener(e -> {
-                Component source = (Component) e.getSource();
-                Window window = SwingUtilities.getWindowAncestor(source);
-
-                if (window != null) {
-                    window.dispose();  // Close the top-level parent window
-                }
+                Container container = (Container) e.getSource();
+                Frame frame = JOptionPane.getFrameForComponent(container);
+                frame.dispose();  // Close the frame associated with the JOptionPane
             });
 
-            SwingUtilities.invokeLater(() -> {
-                JOptionPane.showOptionDialog(
-                        this,
-                        "User with this email does not exist. Please try signing up or logging in with a different email.",
-                        state.getEmailError(),
-                        JOptionPane.DEFAULT_OPTION,
-                        JOptionPane.ERROR_MESSAGE,
-                        null,
-                        new Object[]{okButton1},
-                        okButton1);
-            });
-            resetState();
+            JOptionPane.showOptionDialog(
+                    this,
+                    "User with this email does not exist. Please try signing up or logging in with a different email.",
+                    state.getEmailError(),
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.ERROR_MESSAGE,
+                    null,
+                    new Object[]{okButton1},
+                    okButton1);
         }
 
         if (state.getPasswordError() != null) {
             JButton okButton = new JButton("OK");
 
             okButton.addActionListener(e -> {
-                Component source = (Component) e.getSource();
-                Window window = SwingUtilities.getWindowAncestor(source);
-
-                if (window != null) {
-                    window.dispose();  // Close the top-level parent window
-                }
+                Container container = (Container) e.getSource();
+                Frame frame = JOptionPane.getFrameForComponent(container);
+                frame.dispose();  // Close the frame associated with the JOptionPane
             });
 
-            SwingUtilities.invokeLater(() -> {
-                JOptionPane.showOptionDialog(
-                        this,
-                        "The password entered is incorrect. Please try again.",
-                        state.getPasswordError(),
-                        JOptionPane.DEFAULT_OPTION,
-                        JOptionPane.ERROR_MESSAGE,
-                        null,
-                        new Object[]{okButton},
-                        okButton);
-            });
-            resetState();
+            JOptionPane.showOptionDialog(
+                    this,
+                    "The password entered is incorrect. Please try again.",
+                    state.getEmailError(),
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.ERROR_MESSAGE,
+                    null,
+                    new Object[]{okButton},
+                    okButton);
         }
-
-
-//        if (state.getEmailError() != null) {
-//            JButton okButton1 = new JButton("OK");
-//
-////            okButton1.addActionListener(e -> {
-////                Container container = (Container) e.getSource();
-////                Frame frame = JOptionPane.getFrameForComponent(container);
-////                frame.dispose();  // Close the frame associated with the JOptionPane
-////            });
-//
-//            okButton1.addActionListener(e -> {
-//                Component source = (Component) e.getSource();
-//                Window window = SwingUtilities.getWindowAncestor(source);
-//
-//                if (window != null) {
-//                    window.dispose();  // Close the top-level parent window
-//                }
-//            });
-//
-//
-//            JOptionPane.showOptionDialog(
-//                    this,
-//                    "User with this email does not exists. Please try signing up, or logging in with a different email.",
-//                    state.getEmailError(),
-//                    JOptionPane.DEFAULT_OPTION,
-//                    JOptionPane.ERROR_MESSAGE,
-//                    null,
-//                    new Object[]{okButton1},
-//                    okButton1);
-//        }
-//        if (state.getPasswordError() != null) {
-//            JButton okButton = new JButton("OK");
-//
-//            okButton.addActionListener(e -> {
-//                Component source = (Component) e.getSource();
-//                Window window = SwingUtilities.getWindowAncestor(source);
-//
-//                if (window != null) {
-//                    window.dispose();  // Close the top-level parent window
-//                }
-//            });
-//
-//
-//            JOptionPane.showOptionDialog(
-//                    this,
-//                    "The password entered is incorrect. Please try again.",
-//                    state.getPasswordError(),
-//                    JOptionPane.DEFAULT_OPTION,
-//                    JOptionPane.ERROR_MESSAGE,
-//                    null,
-//                    new Object[]{okButton},
-//                    okButton);
-//        }
 
         setFields(state);
     }
@@ -286,5 +266,7 @@ public class LoginView extends JFrame implements ActionListener, PropertyChangeL
         LoginState newState = new LoginState();
         loginViewModel.setState(newState);
     }
+
+
 }
 

@@ -38,6 +38,13 @@ public class LoginPresenter implements LoginOutputBoundary {
     }
 
     @Override
+    public void prepareFailViewEmpty(String error) {
+        LoginState loginState = loginViewModel.getState();
+        loginState.setEmailEmpty(true);
+        loginViewModel.firePropertyChanged();
+    }
+
+    @Override
     public void prepareFailViewEmail(String error) {
         LoginState loginState = loginViewModel.getState();
         loginState.setEmailError(error);
