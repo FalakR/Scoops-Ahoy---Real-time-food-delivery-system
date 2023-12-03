@@ -3,6 +3,7 @@ package interface_adapters.add_to_cart;
 import entities.IceCream;
 import entities.IceCreamFactory;
 import junit.framework.TestCase;
+import org.junit.Test;
 import use_cases.add_to_cart.AddToCartInputBoundary;
 import use_cases.add_to_cart.AddToCartInputData;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertTrue;
 
 public class AddToCartControllerTest extends TestCase {
-
+    @Test
     public void testAddToCartController(){
 
         AddToCartInputBoundary mockAddToCartUseCaseInteractor = new MockAddToCartUseCaseInteractor();
@@ -46,7 +47,7 @@ public class AddToCartControllerTest extends TestCase {
 
 
     }
-
+    @Test
     public void testExecute() {
     }
 }
