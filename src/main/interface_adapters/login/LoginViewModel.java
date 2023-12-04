@@ -30,7 +30,7 @@ public class LoginViewModel extends ViewModel {
     // This is what the Signup Presenter will call to let the ViewModel know
     // to alert the View
     public void firePropertyChanged() {
-        propertyChanged = true;
+        propertyChanged = state.getEmailError() != null || state.getPasswordError() != null;
 
         if (state.getEmailError() != null) {
             support.firePropertyChange("emailError", null, state);
