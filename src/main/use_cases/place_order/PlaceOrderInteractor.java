@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
+import com.google.maps.model.LatLng;
 import entities.CommonLocation;
 import entities.IceCream;
 import entities.Location;
@@ -68,17 +69,12 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
     }
 
     private void publishOrder(String userAddress, List<IceCream> iceCreams) {
-        // TODO: gmaps, publish ably, set orderId and userLocation
-        System.out.println("Address: " + userAddress);
         Location userLocation = this.convertToCoordinates(userAddress);
         String orderId = this.placeOrderDataAccessObject.publish(iceCreams, userLocation);
 
         // Set DB
         this.placeOrderUserDataAccessObject.setOrderId(orderId);
         this.placeOrderUserDataAccessObject.setLocation(userLocation);
-
-        // publish
-        this.placeOrderDataAccessObject.publish(iceCreams, userLocation);
     }
 
     private Location convertToCoordinates(String userAddress) {
@@ -89,18 +85,16 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
         try {
             results = GeocodingApi.geocode(context,
                     userAddress).await();
+
         } catch (Exception e) {
             System.err.println("Cannot get location from address");
             System.err.println(e);
         }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String addr = gson.toJson(results[0].addressComponents);
-        System.out.println("GMAPS ADDRESS OUTPUT" + addr);
-
+        LatLng loc = results[0].geometry.location;
 
         context.shutdown();
-        // TODO: RETURN THE RIGHT LOCATION
-        return new CommonLocation(0, 0);
+        return new CommonLocation(loc.lat, loc.lng);
     }
 
     private String createOrderSummary(List<IceCream> iceCreams, String userAddress) {

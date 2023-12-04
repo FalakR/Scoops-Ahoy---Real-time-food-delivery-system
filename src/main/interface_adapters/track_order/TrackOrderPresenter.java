@@ -20,10 +20,14 @@ public class TrackOrderPresenter implements TrackOrderOutputBoundary {
     @Override
     public void prepareView(TrackOrderOutputData data) {
         TrackOrderState state = this.viewModel.getState();
-
+        if (state == null) {
+            state = new TrackOrderState();
+        }
         // modify state according to the data
         state.userLocation = data.userLocation;
         state.deliveryAgentLocation = data.deliveryAgentLocation;
+
+        this.viewModel.setState(state);
 
         this.viewModel.firePropertyChanged();
 
