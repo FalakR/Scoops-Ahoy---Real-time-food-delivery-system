@@ -25,6 +25,7 @@ import org.jxmapviewer.viewer.*;
 public class TrackOrderView extends JFrame implements ActionListener, PropertyChangeListener {
     private final TrackOrderViewModel viewModel;
     public final String viewName = "track order";
+    public JLabel title;
     private final JXMapViewer mapViewer;
 
     public TrackOrderView(TrackOrderViewModel viewModel) {
@@ -32,10 +33,10 @@ public class TrackOrderView extends JFrame implements ActionListener, PropertyCh
         this.viewModel.addPropertyChangeListener(this);
 
         // Set title
-        JLabel title = new JLabel("Scoops Ahoy - Track Order");
-        title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24)); // Set font to Engravers Gothic BT
-        title.setSize(200, 100);
-        title.setBorder(BorderFactory.createEmptyBorder(32, 16, 24, 0));
+        this.title = new JLabel("Scoops Ahoy - Track Order");
+        this.title.setFont(new Font("Engravers Gothic BT", Font.BOLD, 24)); // Set font to Engravers Gothic BT
+        this.title.setSize(200, 100);
+        this.title.setBorder(BorderFactory.createEmptyBorder(32, 16, 24, 0));
 
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
@@ -55,7 +56,7 @@ public class TrackOrderView extends JFrame implements ActionListener, PropertyCh
 
         JPanel mapView = new JPanel();
         mapView.setLayout(new BoxLayout(mapView, BoxLayout.Y_AXIS));
-        mapView.add(title);
+        mapView.add(this.title);
         mapView.add(mapViewer);
         mapView.setSize(new Dimension(1000, 625));
         this.mapViewer.setZoom(5);
@@ -100,7 +101,13 @@ public class TrackOrderView extends JFrame implements ActionListener, PropertyCh
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         TrackOrderState state = (TrackOrderState) evt.getNewValue();
-        setFields(state);
+        if (state != null) {
+            if (state.isSuccess) {
+                this.title.setText("YOUR ORDER IS HERE!!!");
+            } else {
+                setFields(state);
+            }
+        }
     }
 
     private void setFields(TrackOrderState state) {
