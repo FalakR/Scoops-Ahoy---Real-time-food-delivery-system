@@ -1,6 +1,7 @@
 package interface_adapters.login;
 
 import interface_adapters.ViewModel;
+import interface_adapters.notification.NotifViewModel;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
