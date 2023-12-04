@@ -60,6 +60,32 @@ public class PlaceOrderPresenterTest {
         assertEquals(1, viewManagerModel.setActiveViewCallCount);
         assertEquals(1, viewManagerModel.firePropertyChangedCallCount);
     }
+    @Test
+    public void testprepareFailView(){
+        IceCreamFactory factory = new CommonIceCreamFactory();
+
+        IceCream iceCream1 = factory.create("ChocolateChip","Cookie Dough",10);
+
+        ArrayList<IceCream> list = new ArrayList<>();
+        list.add(iceCream1);
+
+        CommonCart cart = new CommonCart(list);
+        String userAddress = "";
+        String creditCardNumber = "1234567890123456";
+        String cvv = "123";
+        String expiryDate = "1223";
+
+        String summary  = createOrderSummary(list,userAddress);
+        PlaceOrderOutputData outputData = new PlaceOrderOutputData(summary, userAddress);
+        PlaceOrderState state= new PlaceOrderState();
+        placeOrderPresenter.prepareFailView("Order Failed");
+
+        assertEquals(1, placeOrderViewModel.getStateCallCount);
+
+        assertEquals(1, placeOrderViewModel.firePropertyChangedCallCount);
+        assertEquals(state.getAddressError(),"Order Failed");
+
+    }
     private String createOrderSummary(List<IceCream> iceCreams, String userAddress) {
         if (iceCreams.isEmpty()) return "No items in the order.";
         StringBuilder orderSummaryBuilder = new StringBuilder("Order Summary:\n");

@@ -16,9 +16,7 @@ public class PlaceOrderInputData {
         this.cvv = cvv;
         this.expiryDate = expiryDate;
     }
-    public CommonCart getCart() {
-        return cart;
-    }
+
     public List<IceCream> getIceCreams() {
         return cart.getItems();
     }

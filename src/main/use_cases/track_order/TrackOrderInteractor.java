@@ -32,7 +32,10 @@ public class TrackOrderInteractor implements TrackOrderInputBoundary, TrackOrder
                 orderId
         );
     }
-
+    private double getDistance(double lat1, double lon1, double lat2, double lon2) {
+        // Returns the euclidian distance between two points.
+        return Math.sqrt(Math.pow(lat2 - lat1, 2) + Math.pow(lon2 - lon1, 2));
+    }
     @Override
     public void onChange(Location deliveryAgentLocation) {
         // When we receive a new location, we prepare a new view.
@@ -41,6 +44,17 @@ public class TrackOrderInteractor implements TrackOrderInputBoundary, TrackOrder
                 deliveryAgentLocation
         );
 
+        double distance = getDistance(
+                this.userLocation.getX().doubleValue(),
+                this.userLocation.getY().doubleValue(),
+                deliveryAgentLocation.getX().doubleValue(),
+                deliveryAgentLocation.getY().doubleValue()
+        );
+
+        System.out.println("Distance: " + distance);
+        if (distance < 4E-4) {
+            this.trackOrderPresenter.prepareSuccessView();
+        }
         this.trackOrderPresenter.prepareView(out);
     }
 }
