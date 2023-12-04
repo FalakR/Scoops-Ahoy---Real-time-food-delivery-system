@@ -7,6 +7,7 @@ import interface_adapters.ViewManagerModel;
 
 import interface_adapters.add_to_cart.AddToCartViewModel;
 import interface_adapters.login.LoginViewModel;
+import interface_adapters.notification.NotifViewModel;
 import interface_adapters.place_order.PlaceOrderViewModel;
 import interface_adapters.signup.SignupViewModel;
 
@@ -48,6 +49,7 @@ public class Main {
         AddToCartViewModel browseViewModel = new AddToCartViewModel();
         PlaceOrderViewModel placeOrderViewModel = new PlaceOrderViewModel();
         TrackOrderViewModel trackOrderViewModel = new TrackOrderViewModel();
+        NotifViewModel notifViewModel = new NotifViewModel();
 
 
         FileUserDataAccessObject userDataAccessObject;

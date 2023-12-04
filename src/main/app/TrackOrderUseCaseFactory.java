@@ -18,7 +18,7 @@ public class TrackOrderUseCaseFactory {
             TrackOrderUserDataAccessInterface trackOrderUserDataAccessObject
     ) {
         TrackOrderOutputBoundary trackOrderOutputBoundary = new TrackOrderPresenter(
-                viewManagerModel,
+                 viewManagerModel,
                 trackOrderViewModel
         );
         TrackOrderInputBoundary trackOrderInteractor = new TrackOrderInteractor(
