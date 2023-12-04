@@ -1,131 +1,92 @@
-//package view;
-//
-//import data_access.FileIceCreamDataAccessObject;
-//import entities.CommonIceCreamFactory;
-//import entities.IceCream;
-//import entities.IceCreamFactory;
-//import interface_adapters.ViewManagerModel;
-//import interface_adapters.add_to_cart.AddToCartController;
-//import interface_adapters.add_to_cart.AddToCartPresenter;
-//import interface_adapters.add_to_cart.AddToCartViewModel;
-//import interface_adapters.place_order.PlaceOrderController;
-//import interface_adapters.place_order.PlaceOrderViewModel;
-//import org.junit.Before;
-//import org.junit.Test;
-//import use_cases.add_to_cart.AddToCartInputBoundary;
-//import use_cases.add_to_cart.AddToCartOutputData;
-//import use_cases.place_order.PlaceOrderInputBoundary;
-//
-//import java.io.IOException;
-//import java.util.ArrayList;
-//
-//public class PlaceOrderViewTest {
-//
-//
-//
-//    private ViewManagerModel viewManagerModel;
-//    private PlaceOrderViewModel placeOrderViewModel;
-//    private TestPlaceOrderController placeOrderController;
-//    private TestPlaceOrderPresenter placeOrderPresenter;
-//    private TestPlaceOrderViewModel testplaceOrderViewModel;
-//
-//    private PlaceOrderView placeOrderView;
-//    private PlaceOrderInputBoundary placeOrderInputBoundary;
-//
-//    @Before
-//    public void setUp() throws IOException {
-//
-//        IceCreamFactory iceCreamFactory1 = new CommonIceCreamFactory();
-//
-//
-//        placeOrderController = new TestPlaceOrderController(placeOrderInputBoundary);
-//        placeOrderPresenter = new TestPlaceOrderPresenter(viewManagerModel, addToCartViewModel1, placeOrderViewModel);
-//        PlaceOrderViewModel = new TestAddToCartViewModel();
-//        fileIceCreamDataAccessObject = new TestFileIceCreamDataAccessObject(iceCreamFactory1);
-//
-//        browseView = new BrowseView(addToCartController, addToCartPresenter, addToCartViewModel, fileIceCreamDataAccessObject);
-//    }
-//
-//    @Test
-//    public void testActionPerformed() {
-//        // Example: Test the actionPerformed method
-//        browseView.actionPerformed(null); // Pass a dummy ActionEvent since it's not used in your method
-//
-//        // Add assertions based on the expected behavior
-//    }
-//
-//    @Test
-//    public void testPropertyChange() {
-//        // Example: Test the propertyChange method
-//        browseView.propertyChange(null); // Pass a dummy PropertyChangeEvent since it's not used in your method
-//
-//        // Add assertions based on the expected behavior
-//    }
-//
-//    // Mock implementation of AddToCartController for testing
-//    static class TestAddToCartController extends PlaceOrderController {
-//
-//        private boolean executeCalled = false;
-//
-//        public TestAddToCartController(PlaceOrderInputBoundary placeOrderUseCaseInteractor) {
-//            super(placeOrderUseCaseInteractor);
-//        }
-//
-//        @Override
-//        public void execute(ArrayList<IceCream> iceCreams) {
-//            executeCalled = true;
-//        }
-//
-//        public boolean isExecuteCalled() {
-//            return executeCalled;
-//        }
-//    }
-//
-//    // Mock implementation of AddToCartPresenter for testing
-//    static class TestAddToCartPresenter extends AddToCartPresenter {
-//
-//        private boolean prepareSuccessViewCalled = false;
-//
-//        public TestAddToCartPresenter(ViewManagerModel viewManagerModel, AddToCartViewModel addToCartViewModel, PlaceOrderViewModel placeOrderViewModel) {
-//            super(viewManagerModel, addToCartViewModel, placeOrderViewModel);
-//        }
-//
-//        @Override
-//        public void prepareSuccessView(AddToCartOutputData cart) {
-//            prepareSuccessViewCalled = true;
-//        }
-//
-//        public boolean isPrepareSuccessViewCalled() {
-//            return prepareSuccessViewCalled;
-//        }
-//    }
-//
-//    // Mock implementation of AddToCartViewModel for testing
-//    static class TestAddToCartViewModel extends AddToCartViewModel {
-//
-//        // Implement methods if needed for testing
-//    }
-//
-//    // Mock implementation of FileIceCreamDataAccessObject for testing
-//
-//    static class TestFileIceCreamDataAccessObject extends FileIceCreamDataAccessObject {
-//
-//        private static final String TEST_CSV_PATH = "./icecreamsinfo.csv"; // Replace with your actual test CSV path
-//
-//        public TestFileIceCreamDataAccessObject(IceCreamFactory iceCreamFactory) throws IOException {
-//            super(TEST_CSV_PATH, iceCreamFactory);
-//        }
-//
-//        // Additional methods if needed for testing
-//
-//        // Override methods if needed for testing
-//
-//        // For example, you might want to override getIceCream to provide custom behavior for testing
-//        @Override
-//        public IceCream getIceCream(String name) {
-//            // Implement custom behavior for testing
-//            return super.getIceCream(name);
-//        }
-//    }
-//
-//}
+package view;
+
+import entities.CommonCart;
+import entities.IceCream;
+import interface_adapters.ViewManagerModel;
+import interface_adapters.place_order.PlaceOrderController;
+import interface_adapters.place_order.PlaceOrderPresenter;
+import interface_adapters.place_order.PlaceOrderViewModel;
+import interface_adapters.track_order.TrackOrderViewModel;
+import org.junit.Before;
+import org.junit.Test;
+import use_cases.place_order.PlaceOrderInputBoundary;
+import use_cases.place_order.PlaceOrderOutputData;
+
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+public class PlaceOrderViewTest {
+
+    private PlaceOrderViewModel placeOrderViewModel;
+    private TestPlaceOrderController placeOrderController;
+    private TestPlaceOrderPresenter placeOrderPresenter;
+    private PlaceOrderView placeOrderView;
+
+    private TrackOrderViewModel trackOrderViewModel;
+    private ViewManagerModel viewManagerModel;
+
+    private PlaceOrderInputBoundary placeOrderInputBoundary;
+
+    @Before
+    public void setUp() {
+        placeOrderViewModel = new PlaceOrderViewModel();
+        placeOrderController = new TestPlaceOrderController(placeOrderInputBoundary);
+        placeOrderPresenter = new TestPlaceOrderPresenter( placeOrderViewModel, viewManagerModel, trackOrderViewModel);
+        placeOrderView = new PlaceOrderView(placeOrderViewModel, placeOrderController, placeOrderPresenter);
+    }
+
+    @Test
+    public void testActionPerformed() {
+        // Example: Test the actionPerformed method
+        placeOrderView.propertyChange(null);
+    }
+
+    @Test
+    public void testPropertyChange() {
+        // Example: Test the propertyChange method
+        placeOrderView.propertyChange(null); // Pass a dummy PropertyChangeEvent since it's not used in your method
+
+    }
+
+    // Mock implementation of PlaceOrderController for testing
+    static class TestPlaceOrderController extends PlaceOrderController {
+
+        private boolean executeCalled = false;
+
+        public TestPlaceOrderController(PlaceOrderInputBoundary placeorderUseCaseInteractor) {
+            super(placeorderUseCaseInteractor);
+        }
+
+        @Override
+        public void execute(CommonCart cart, List<IceCream> iceCreams, String address, String cardNumber, String cvv, String expiryDate) {
+            executeCalled = true;
+        }
+
+        public boolean isExecuteCalled() {
+            return executeCalled;
+        }
+    }
+
+    // Mock implementation of PlaceOrderPresenter for testing
+    static class TestPlaceOrderPresenter extends PlaceOrderPresenter {
+
+        private boolean prepareSummaryViewCalled = false;
+
+        public TestPlaceOrderPresenter(PlaceOrderViewModel placeOrderViewModel, ViewManagerModel viewManagerModel, TrackOrderViewModel trackOrderViewModel) {
+            super(placeOrderViewModel, viewManagerModel, trackOrderViewModel);
+        }
+
+        @Override
+        public void prepareSummaryView(PlaceOrderOutputData outputData) {
+            prepareSummaryViewCalled = true;
+        }
+
+        public boolean isPrepareSummaryViewCalled() {
+            return prepareSummaryViewCalled;
+        }
+    }
+}
