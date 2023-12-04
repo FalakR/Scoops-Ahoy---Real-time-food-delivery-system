@@ -62,9 +62,14 @@ public class PlaceOrderInteractorTest extends TestCase{
             }
         };
 
-//        interactor.execute(inputData);
-
-
+        try {
+            // Execute the interactor, expecting an exception
+            interactor.execute(inputData);
+            fail("Exception should have been thrown");
+        } catch (RuntimeException e) {
+            // Handle the expected exception or add specific assertions based on your requirements
+            assertNotNull(e.getMessage()); // Add assertions as needed
+        }
 
     }
 
