@@ -13,9 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 import use_cases.add_to_cart.AddToCartInputBoundary;
 import use_cases.add_to_cart.AddToCartOutputData;
-
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertTrue;
 
 public class BrowseViewTest {
 
@@ -46,18 +47,13 @@ public class BrowseViewTest {
 
     @Test
     public void testActionPerformed() {
-        // Example: Test the actionPerformed method
-        browseView.actionPerformed(null); // Pass a dummy ActionEvent since it's not used in your method
+        browseView.actionPerformed(null);
 
-        // Add assertions based on the expected behavior
     }
 
     @Test
     public void testPropertyChange() {
-        // Example: Test the propertyChange method
-        browseView.propertyChange(null); // Pass a dummy PropertyChangeEvent since it's not used in your method
-
-        // Add assertions based on the expected behavior
+        browseView.propertyChange(null);
     }
 
     // Mock implementation of AddToCartController for testing
@@ -101,29 +97,22 @@ public class BrowseViewTest {
     // Mock implementation of AddToCartViewModel for testing
     static class TestAddToCartViewModel extends AddToCartViewModel {
 
-        // Implement methods if needed for testing
     }
 
     // Mock implementation of FileIceCreamDataAccessObject for testing
 
     static class TestFileIceCreamDataAccessObject extends FileIceCreamDataAccessObject {
 
-        private static final String TEST_CSV_PATH = "./icecreamsinfo.csv"; // Replace with your actual test CSV path
+        private static final String TEST_CSV_PATH = "./icecreamsinfo.csv";
 
         public TestFileIceCreamDataAccessObject(IceCreamFactory iceCreamFactory) throws IOException {
             super(TEST_CSV_PATH, iceCreamFactory);
         }
 
-        // Additional methods if needed for testing
-
-        // Override methods if needed for testing
-
-        // For example, you might want to override getIceCream to provide custom behavior for testing
         @Override
         public IceCream getIceCream(String name) {
             // Implement custom behavior for testing
             return super.getIceCream(name);
         }
     }
-
 }
