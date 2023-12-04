@@ -30,8 +30,6 @@ public class TrackOrderPresenter implements TrackOrderOutputBoundary {
         this.viewModel.setState(state);
 
         this.viewModel.firePropertyChanged();
-
-        // TODO: if user location is sufficiently close, switch to success view.
     }
 
     @Override
