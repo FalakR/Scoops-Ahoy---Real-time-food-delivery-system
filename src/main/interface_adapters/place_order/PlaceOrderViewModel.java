@@ -17,6 +17,7 @@ public class PlaceOrderViewModel extends ViewModel {
     public final String PLACE_ORDER_BUTTON_LABEL = "Place Order";
 
     private PlaceOrderState state = new PlaceOrderState();
+    private boolean propertyChanged;
 
     public PlaceOrderViewModel() {
         super("place order");
@@ -29,11 +30,24 @@ public class PlaceOrderViewModel extends ViewModel {
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void firePropertyChanged() {
-        support.firePropertyChange("state", null, this.state);
+
+        propertyChanged = state.getAddressError() != null || state.getCardNumberError() != null;
+
+        if (state.getAddressError() != null) {
+            support.firePropertyChange("addressError", null, state);
+        }
+
+        if (state.getCardNumberError() != null) {
+            support.firePropertyChange("cardNumberError", null, state);
+        }
+
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
+    }
+    public boolean isPropertyChanged() {
+        return propertyChanged;
     }
 
     public PlaceOrderState getState() {
