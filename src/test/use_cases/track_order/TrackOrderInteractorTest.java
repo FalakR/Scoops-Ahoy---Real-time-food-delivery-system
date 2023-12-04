@@ -21,6 +21,7 @@ public class TrackOrderInteractorTest {
         final String[] returnedOrderId = {null};
         final TrackOrderDataAccessObjectSubscriber[] sub = new TrackOrderDataAccessObjectSubscriber[1];
         Location userLocation = new CommonLocation(1.0, 1.0);
+        Location deliveryAgentLocation = new CommonLocation(2.0, 2.0);
         List<TrackOrderOutputData> sentToPresenter = new ArrayList<>();
 
         TrackOrderInputBoundary interactor = new TrackOrderInteractor(
@@ -40,7 +41,17 @@ public class TrackOrderInteractorTest {
                         return userLocation;
                     }
                 },
-                sentToPresenter::add
+                new TrackOrderOutputBoundary() {
+                    @Override
+                    public void prepareView(TrackOrderOutputData data) {
+                        sentToPresenter.add(data);
+                    }
+
+                    @Override
+                    public void prepareSuccessView() {
+
+                    }
+                }
         );
         // Act 1: execute
 
@@ -49,5 +60,24 @@ public class TrackOrderInteractorTest {
         // Assert
 
         assertEquals(1, subscribeCallCount[0]);
+
+
+        // Act 2: call onChange
+        sub[0].onChange(
+                deliveryAgentLocation
+        );
+
+        assertEquals(
+                1,
+                sentToPresenter.size()
+        );
+        assertEquals(
+                userLocation,
+                sentToPresenter.get(0).userLocation
+        );
+        assertEquals(
+                deliveryAgentLocation,
+                sentToPresenter.get(0).deliveryAgentLocation
+        );
     }
 }

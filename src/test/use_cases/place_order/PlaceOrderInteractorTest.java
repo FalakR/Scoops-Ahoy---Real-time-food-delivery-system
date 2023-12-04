@@ -66,6 +66,11 @@ public class PlaceOrderInteractorTest extends TestCase{
         public void prepareView(TrackOrderOutputData data) {
 
         }
+
+        @Override
+        public void prepareSuccessView() {
+
+        }
     }
     public void testTestFailureUserAddressEmpty() throws AblyException {
         IceCreamFactory factory = new IceCreamFactory() {

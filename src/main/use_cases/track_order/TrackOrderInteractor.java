@@ -51,7 +51,6 @@ public class TrackOrderInteractor implements TrackOrderInputBoundary, TrackOrder
                 deliveryAgentLocation.getY().doubleValue()
         );
 
-        System.out.println("Distance: " + distance);
         if (distance < 4E-4) {
             this.trackOrderPresenter.prepareSuccessView();
         }
