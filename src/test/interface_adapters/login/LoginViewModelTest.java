@@ -95,6 +95,7 @@ public class LoginViewModelTest {
         support.removePropertyChangeListener(listener);
     }
 
+
     @Test
     public void testFirePropertyChangedWithPasswordEmpty() {
         // Arrange
@@ -116,6 +117,7 @@ public class LoginViewModelTest {
         assertTrue(viewModel.isPropertyChanged());
         support.removePropertyChangeListener(listener);
     }
+
 
     // Add more test cases as needed
 }

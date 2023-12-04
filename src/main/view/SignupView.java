@@ -18,14 +18,14 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
     public final String viewName = "sign up";
 
     private final SignupViewModel signupViewModel;
-    private final JTextField nameInputField = new JTextField(15);
-    private final JTextField emailInputField = new JTextField(15);
-    private final JPasswordField passwordInputField = new JPasswordField(15);
+    final JTextField nameInputField = new JTextField(15);
+    final JTextField emailInputField = new JTextField(15);
+    final JPasswordField passwordInputField = new JPasswordField(15);
     private final SignupController signupController;
     private final SignupPresenter signupPresenter;
 
-    private final JButton signUp;
-    private final JButton logIn;
+    final JButton signUp;
+    final JButton logIn;
 
 
     public SignupView(SignupController controller, SignupPresenter presenter, SignupViewModel signupViewModel) {
@@ -52,15 +52,11 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
         JPanel buttons = new JPanel();
         signUp = new JButton("Sign Up");
         signUp.setPreferredSize(new Dimension(100, 50));
-//        signUp.setBackground(new Color(255, 223, 0));
-//        signUp.setOpaque(true);
-//        signUp.setBorderPainted(false);
+
         buttons.add(signUp);
         logIn = new JButton("Log In");
         logIn.setPreferredSize(new Dimension(100, 50));
-//        logIn.setBackground(new Color(255, 223, 0));
-//        logIn.setOpaque(true);
-//        logIn.setBorderPainted(false);
+
         buttons.add(logIn);
 
         this.setBackground(new Color(253, 227, 245)); // Pastel Pink
@@ -72,25 +68,6 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
         // Set text color
         title.setForeground(new Color(77, 77, 77)); // Dark Gray
 
-//        // Set button color
-//        signUp.setBackground(new Color(255, 223, 0)); // Baby Pink
-//        logIn.setBackground(new Color(255, 223, 0)); // Baby Pink
-
-//        JLabel title = new JLabel(signupViewModel.TITLE_LABEL);
-//        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-//
-//        LabelTextPanel nameInfo = new LabelTextPanel(
-//                new JLabel(signupViewModel.NAME_LABEL), nameInputField);
-//        LabelTextPanel emailInfo = new LabelTextPanel(
-//                new JLabel(signupViewModel.EMAIL_LABEL), emailInputField);
-//        LabelTextPanel passwordInfo = new LabelTextPanel(
-//                new JLabel(signupViewModel.PASSWORD_LABEL), passwordInputField);
-//
-//        JPanel buttons = new JPanel();
-//        signUp = new JButton(signupViewModel.SIGNUP_BUTTON_LABEL);
-//        buttons.add(signUp);
-//        logIn = new JButton(signupViewModel.LOGIN_BUTTON_LABEL);
-//        buttons.add(logIn);
 
         signUp.addActionListener(
                 // This creates an anonymous subclass of ActionListener and instantiates it.
@@ -181,20 +158,6 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         titlePanel.add(title);
 
-//        // Create a panel for the form with GridBagLayout to center align vertically
-//        JPanel formPanel = new JPanel(new GridBagLayout());
-//
-//        GridBagConstraints gbc = new GridBagConstraints();
-//        gbc.gridx = 0;
-//        gbc.gridy = 0;
-//        gbc.insets = new Insets(5, 5, 5, 5);  // Add some padding
-//        formPanel.add(nameInfo, gbc);
-//
-//        gbc.gridy = 1;
-//        formPanel.add(emailInfo, gbc);
-//
-//        gbc.gridy = 2;
-//        formPanel.add(passwordInfo, gbc);
 
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
@@ -216,13 +179,6 @@ public class SignupView extends JFrame implements ActionListener, PropertyChange
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-//        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-//
-//        this.add(title);
-//        this.add(nameInfo);
-//        this.add(emailInfo);
-//        this.add(passwordInfo);
-//        this.add(buttons);
 
     /**
      * React to a button click that results in evt.
