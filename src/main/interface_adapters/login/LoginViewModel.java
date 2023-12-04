@@ -31,7 +31,7 @@ public class LoginViewModel extends ViewModel {
     // This is what the Signup Presenter will call to let the ViewModel know
     // to alert the View
     public void firePropertyChanged() {
-        propertyChanged = state.getEmailError() != null || state.getPasswordError() != null;
+        propertyChanged = state.getEmailError() != null || state.getPasswordError() != null || state.isEmailEmpty() || state.isPasswordEmpty();
 
         if (state.getEmailError() != null) {
             support.firePropertyChange("emailError", null, state);
@@ -39,6 +39,14 @@ public class LoginViewModel extends ViewModel {
 
         if (state.getPasswordError() != null) {
             support.firePropertyChange("passwordError", null, state);
+        }
+
+        if (state.isPasswordEmpty()) {
+            support.firePropertyChange("passwordEmpty", null, state);
+        }
+
+        if (state.isEmailEmpty()) {
+            support.firePropertyChange("emailEmpty", null, state);
         }
 
     }

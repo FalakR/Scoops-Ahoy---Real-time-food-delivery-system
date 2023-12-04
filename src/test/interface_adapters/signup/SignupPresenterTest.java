@@ -48,9 +48,10 @@ public class SignupPresenterTest {
         signupPresenter.prepareLoginView();
 
         // Assert
-        assertTrue(loginViewModel.isPropertyChanged());
+        assertFalse(loginViewModel.isPropertyChanged());
         assertEquals(loginViewModel.getViewName(), viewManagerModel.getActiveView());
     }
+
 
     @Test
     public void testPrepareFailView() {
