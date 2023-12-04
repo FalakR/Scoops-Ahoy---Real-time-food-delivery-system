@@ -4,6 +4,7 @@ import entities.Cart;
 import entities.CommonCart;
 import entities.IceCream;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlaceOrderState {
@@ -98,4 +99,6 @@ public class PlaceOrderState {
         this.cart = cart;
     }
 
+    public void setIceCreams(ArrayList<IceCream> iceCreams) {this.iceCreams = iceCreams;
+    }
 }

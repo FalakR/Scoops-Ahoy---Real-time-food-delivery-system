@@ -7,8 +7,7 @@ import entities.CommonIceCreamFactory;
 import entities.IceCream;
 import entities.IceCreamFactory;
 import interface_adapters.ViewManagerModel;
-import interface_adapters.add_to_cart.AddToCartPresenter;
-import interface_adapters.add_to_cart.AddToCartPresenterTest;
+
 import interface_adapters.track_order.TrackOrderState;
 import interface_adapters.track_order.TrackOrderViewModel;
 import org.junit.Before;
@@ -53,6 +52,7 @@ public class PlaceOrderPresenterTest {
         placeOrderPresenter.prepareSummaryView(outputData);
 
         assertEquals(1, placeOrderViewModel.getStateCallCount);
+        assertEquals(0, placeOrderViewModel.setStateCallCount);
 
         assertEquals(1, placeOrderViewModel.firePropertyChangedCallCount);
 
@@ -77,13 +77,11 @@ public class PlaceOrderPresenterTest {
 
         String summary  = createOrderSummary(list,userAddress);
         PlaceOrderOutputData outputData = new PlaceOrderOutputData(summary, userAddress);
-        PlaceOrderState state= new PlaceOrderState();
-        placeOrderPresenter.prepareFailView("Order Failed");
+        placeOrderPresenter.prepareFailView("User address cannot be empty.");
 
         assertEquals(1, placeOrderViewModel.getStateCallCount);
 
         assertEquals(1, placeOrderViewModel.firePropertyChangedCallCount);
-        assertEquals(state.getAddressError(),"Order Failed");
 
     }
     private String createOrderSummary(List<IceCream> iceCreams, String userAddress) {
